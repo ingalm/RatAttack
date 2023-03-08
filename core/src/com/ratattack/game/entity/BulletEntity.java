@@ -6,7 +6,7 @@ public class BulletEntity extends Entity {
 
     private Entity entity;
 
-    public Entity createBullet(String name, boolean multiplayer) {
+    public Entity createBullet() {
         return null;
     }
 
