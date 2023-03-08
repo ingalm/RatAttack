@@ -1,13 +1,14 @@
 package com.ratattack.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.ratattack.game.gamecontroller.*;
 import com.ratattack.game.screens.*;
 
-public class RatAttack extends ApplicationAdapter {
+public class RatAttack extends Game {
 	SpriteBatch batch;
 	Texture img;
 
@@ -21,33 +22,14 @@ public class RatAttack extends ApplicationAdapter {
 	
 	@Override
 	public void create () {
-		gameController = new GameController();
+		gameController = new GameController(this);
+
+		gameController.setStartScreen();
 
 		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
+		img = new Texture("rats.jpg");
 	}
 
-	/*
-	setGameScreen()
-	{
-		gameScreen=new GameScreen(this);
-		setScreen(gameScreen);
-	}
-	setMenuScreen()
-	{
-		menuScreen=new menuScreen(this);
-		setScreen(menuScreen);
-	}
-	setOptionsScreen()
-	{
-		optionsScreen=new OptionsScreen(this);
-		setScreen(optionsScreen);
-	}
-	setTutorialScreen() {
-		tutorialScreen = new TutorialScreen(this);
-		setScreen(tutorialScreen);
-	}
-	 */
 
 	/* Eksempel på en Screen:
 
@@ -81,5 +63,15 @@ mainClass.setMenuScreen();
 	public void dispose () {
 		batch.dispose();
 		img.dispose();
+	}
+
+	@Override
+	public void pause() {
+
+	}
+
+	@Override
+	public void resume() {
+
 	}
 }
