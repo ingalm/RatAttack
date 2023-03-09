@@ -27,7 +27,7 @@ public class RatAttack extends Game {
 		gameController.setStartScreen();
 
 		batch = new SpriteBatch();
-		img = new Texture("rats.jpg");
+		img = new Texture("rats.png");
 	}
 
 

@@ -1,5 +1,6 @@
 package com.ratattack.game.gamecontroller;
 
+import com.badlogic.ashley.core.PooledEngine;
 import com.ratattack.game.RatAttack;
 import com.ratattack.game.screens.GameScreen;
 import com.ratattack.game.screens.MenuScreen;
@@ -11,7 +12,8 @@ public class GameController {
     // Model
     // new Ashley ECS
 
-    RatAttack game;
+    RatAttack game; // Gjør denne til singleton
+    public static PooledEngine engine = new PooledEngine();
 
     public GameController(RatAttack game) {
         this.game = game;
@@ -23,8 +25,8 @@ public class GameController {
     }
 
     private void setGameScreen() {
-        // GameScreen gameScreen = new GameScreen(this);
-        // game.setScreen(gameScreen);
+        GameScreen gameScreen = new GameScreen(this, engine);
+        game.setScreen(gameScreen);
     }
 
     private void setMenuScreen() {

@@ -10,6 +10,7 @@ public class GameWorld {
     // add listeners
 
     final PooledEngine engine;
+    /*
     private final EntityListener entityListener = new EntityListener() {
         @Override
         public void entityAdded(Entity entity) {
@@ -19,19 +20,19 @@ public class GameWorld {
         public void entityRemoved(Entity entity) {
         }
     };
-
+*/
     public GameWorld(PooledEngine engine) {
         this.engine = engine;
     }
 
     public Entity createUser() {
-        Entity userOneEntity = new Entity();
-        userOneEntity.add(new UserComponent());
-        engine.addEntity(userOneEntity);
+        Entity userEntity = new Entity();
+        userEntity.add(new UserComponent());
+        engine.addEntity(userEntity);
 
-        engine.getSystem(UserSystem.class).setUsername(userOneEntity, "SATAN");
+        engine.getSystem(UserSystem.class).setUsername(userEntity, "SATAN");
 
-        return userOneEntity;
+        return userEntity;
     }
 
 }

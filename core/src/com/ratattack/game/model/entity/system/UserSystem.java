@@ -8,16 +8,19 @@ import com.ratattack.game.model.entity.components.UserComponent;
 
 public class UserSystem extends IteratingSystem {
 
-    private static final Family family = Family.all(UserComponent.class).get();
+    private static final Family userComponentFamily = Family.all(UserComponent.class).get();
     private ComponentMapper<UserComponent> userMapper;
     public UserSystem() {
-        super(family);
+        super(userComponentFamily);
         userMapper = ComponentMapper.getFor(UserComponent.class);
     }
 
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
         UserComponent userComponent = userMapper.get(entity);
+
+        //Update highscore
+        //Kanskje update balance? kommer an på hvordan vi implementerer hvordan den vet om balansen har økt idk
     }
 
     public void setUsername(Entity userEntity, String username) {

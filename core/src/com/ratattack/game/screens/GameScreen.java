@@ -6,44 +6,30 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.utils.Pool;
 import com.ratattack.game.RatAttack;
+import com.ratattack.game.gamecontroller.GameController;
 import com.ratattack.game.model.GameWorld;
 import com.ratattack.game.model.entity.system.UserSystem;
 
 public class GameScreen implements Screen {
 
-    private RatAttack game;
-    private Stage stage;
+    private GameController gameController;
+    private PooledEngine engine;
 
     private Texture background;
-    private Label informationText;
+    private Texture textField;
 
-    private Entity userEntity;
-    private UserSystem userSystem;
+
 
     // husk å endre til å ta inn gamecontroller istedet
-    public GameScreen(RatAttack game) {
+    public GameScreen(GameController gameController, PooledEngine engine) {
 
-        super();
-        this.game = game;
+        super(); //Hvorfor trenger man denne wtf
+        this.gameController = gameController;
+        this.engine = engine;
 
-        setupAshley();
 
-    }
-
-    public void setupAshley() {
-
-        PooledEngine engine = new PooledEngine();
-        GameWorld ashleyWorld = new GameWorld(engine);
-
-        // ADDS SYSTEMS TO THE ENGINE
-        engine.addSystem(new UserSystem());
-
-        // CREATE PLAYERS AND COURSE
-        userEntity = ashleyWorld.createUser();
-
-        userSystem = engine.getSystem(UserSystem.class);
-        // game.screenFactory.setEngine(engine);
 
     }
 
