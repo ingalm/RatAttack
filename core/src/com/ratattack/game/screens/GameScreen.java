@@ -21,6 +21,7 @@ public class GameScreen implements Screen {
     private Entity userEntity;
     private UserSystem userSystem;
 
+    // husk å endre til å ta inn gamecontroller istedet
     public GameScreen(RatAttack game) {
 
         super();
