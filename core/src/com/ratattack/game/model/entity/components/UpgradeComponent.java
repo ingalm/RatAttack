@@ -1,4 +1,4 @@
-package com.ratattack.game.entity.components;
+package com.ratattack.game.model.entity.components;
 
 import com.badlogic.ashley.core.Component;
 
