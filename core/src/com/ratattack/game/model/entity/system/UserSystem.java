@@ -5,6 +5,7 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.ratattack.game.model.entity.components.UserComponent;
+import com.ratattack.game.model.entity.components.VelocityComponent;
 
 public class UserSystem extends IteratingSystem {
 
