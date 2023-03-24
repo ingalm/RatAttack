@@ -1,14 +1,12 @@
 package com.ratattack.game.model;
 
 import com.badlogic.ashley.core.Entity;
-import com.badlogic.ashley.core.EntityListener;
 import com.badlogic.ashley.core.PooledEngine;
 import com.ratattack.game.model.entity.components.PositionComponent;
 import com.ratattack.game.model.entity.components.SpriteComponent;
 import com.ratattack.game.model.entity.components.UpgradeComponent;
 import com.ratattack.game.model.entity.components.UserComponent;
 import com.ratattack.game.model.entity.components.VelocityComponent;
-import com.ratattack.game.model.entity.system.UserSystem;
 
 public class GameWorld {
     // add listeners
@@ -33,10 +31,6 @@ public class GameWorld {
         Entity userEntity = new Entity();
         userEntity.add(new UserComponent());
         engine.addEntity(userEntity);
-
-        // dette er bare en test
-        engine.getSystem(UserSystem.class).setUsername(userEntity, "SATAN");
-
         return userEntity;
     }
 
@@ -44,10 +38,7 @@ public class GameWorld {
         Entity grandmotherEntity = new Entity();
         grandmotherEntity.add(new PositionComponent());
         grandmotherEntity.add(new SpriteComponent());
-        //usikker på om denne hører til her eller i bullet
-        grandmotherEntity.add(new UpgradeComponent());
         engine.addEntity(grandmotherEntity);
-
         return grandmotherEntity;
     }
 
@@ -58,7 +49,6 @@ public class GameWorld {
         bulletEntity.add(new SpriteComponent());
         bulletEntity.add(new UpgradeComponent());
         engine.addEntity(bulletEntity);
-
         return bulletEntity;
     }
 
@@ -67,7 +57,6 @@ public class GameWorld {
         ratEntity.add(new SpriteComponent());
         ratEntity.add((new VelocityComponent()));
         ratEntity.add(new PositionComponent());
-
         engine.addEntity(ratEntity);
         return ratEntity;
     }
@@ -77,7 +66,6 @@ public class GameWorld {
         grandChildEntity.add(new SpriteComponent());
         grandChildEntity.add((new VelocityComponent()));
         grandChildEntity.add(new PositionComponent());
-
         engine.addEntity(grandChildEntity);
         return grandChildEntity;
     }
