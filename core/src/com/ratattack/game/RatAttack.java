@@ -11,6 +11,7 @@ public class RatAttack extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;
 
+
 	//Dette skal egentlig flyttes til controller, men vet ikke helt hvordan enda. Må tenkes på rundt state pattern og update().
 	//private GameScreen gameScreen;
 	//private MenuScreen menuScreen;
