@@ -72,4 +72,14 @@ public class GameWorld {
         return ratEntity;
     }
 
+    public Entity createGrandchild() {
+        Entity grandChildEntity = new Entity();
+        grandChildEntity.add(new SpriteComponent());
+        grandChildEntity.add((new VelocityComponent()));
+        grandChildEntity.add(new PositionComponent());
+
+        engine.addEntity(grandChildEntity);
+        return grandChildEntity;
+    }
+
 }
