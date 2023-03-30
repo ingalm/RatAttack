@@ -11,6 +11,8 @@ import com.ratattack.game.model.entity.system.GrandmotherSystem;
 import com.ratattack.game.model.entity.system.RatSystem;
 import com.ratattack.game.model.entity.system.UserSystem;
 
+import java.io.IOException;
+
 public class MenuScreen implements Screen {
 
     GameController gameController;
@@ -83,7 +85,7 @@ public class MenuScreen implements Screen {
         engine.addSystem(new BulletSystem());
     }
 
-    public void addEntities(GameWorld world) {
+    public void addEntities(GameWorld world) throws IOException {
         //Create User
         user = world.createUser();
 

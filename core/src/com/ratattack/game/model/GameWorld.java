@@ -8,6 +8,12 @@ import com.ratattack.game.model.entity.components.UpgradeComponent;
 import com.ratattack.game.model.entity.components.UserComponent;
 import com.ratattack.game.model.entity.components.VelocityComponent;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 public class GameWorld {
     // add listeners
 
@@ -42,12 +48,14 @@ public class GameWorld {
         return grandmotherEntity;
     }
 
-    public Entity createBullet() {
+    public Entity createBullet() throws IOException {
         Entity bulletEntity = new Entity();
         bulletEntity.add(new PositionComponent());
         bulletEntity.add(new VelocityComponent());
-        bulletEntity.add(new SpriteComponent());
-        bulletEntity.add(new UpgradeComponent());
+        BufferedImage image = ImageIO.read(new File("bullet.png"));
+        SpriteComponent sprite = new SpriteComponent();
+        sprite.setImage(image);
+        bulletEntity.add(sprite);
         engine.addEntity(bulletEntity);
         return bulletEntity;
     }

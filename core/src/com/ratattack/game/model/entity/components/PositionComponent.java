@@ -6,4 +6,5 @@ public class PositionComponent implements Component {
 
     public int x;
     public int y;
+
 }
