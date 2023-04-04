@@ -10,7 +10,6 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.4.2'
-        classpath 'com.google.gms:google-services:4.3.15'
     }
 }
 
@@ -53,7 +52,6 @@ project(":desktop") {
 
 project(":android") {
     apply plugin: "com.android.application"
-    apply plugin: 'com.google.gms.google-services'
 
     configurations { natives }
 
@@ -65,10 +63,6 @@ project(":android") {
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86_64"
         api "com.badlogicgames.ashley:ashley:$ashleyVersion"
-        implementation platform('com.google.firebase:firebase-bom:31.2.3')
-        implementation 'com.google.firebase:firebase-analytics'
-        implementation 'com.google.firebase:firebase-firestore:24.4.5'
-        implementation 'com.google.firebase:firebase-core:21.1.1'
     }
 }
 
