@@ -31,6 +31,7 @@ public class GameScreen implements Screen {
 
 
 
+
     }
 
     @Override
@@ -42,6 +43,9 @@ public class GameScreen implements Screen {
     @Override
     public void render(float delta) {
         // TODO Auto-generated method stub
+
+        //Update fra controlleren
+        //Tegn alle entities fra forskjellige systemer på skjermen
         throw new UnsupportedOperationException("Unimplemented method 'render'");
     }
 
