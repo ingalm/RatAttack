@@ -2,6 +2,8 @@ package com.ratattack.game.model;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.ratattack.game.model.entity.components.PositionComponent;
 import com.ratattack.game.model.entity.components.SpriteComponent;
 import com.ratattack.game.model.entity.components.UpgradeComponent;
@@ -57,6 +59,10 @@ public class GameWorld {
         ratEntity.add(new SpriteComponent());
         ratEntity.add((new VelocityComponent()));
         ratEntity.add(new PositionComponent());
+
+        Texture texture = new Texture("rats.png");
+        ratEntity.getComponent(SpriteComponent.class).sprite = new Sprite(texture);
+
         engine.addEntity(ratEntity);
         return ratEntity;
     }

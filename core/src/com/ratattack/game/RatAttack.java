@@ -76,4 +76,8 @@ mainClass.setMenuScreen();
 	public void resume() {
 
 	}
+
+	public SpriteBatch getBatch() {
+		return batch;
+	}
 }

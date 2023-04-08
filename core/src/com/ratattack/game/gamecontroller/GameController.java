@@ -8,6 +8,7 @@ import com.ratattack.game.model.entity.system.BulletSystem;
 import com.ratattack.game.model.entity.system.GrandchildSystem;
 import com.ratattack.game.model.entity.system.GrandmotherSystem;
 import com.ratattack.game.model.entity.system.RatSystem;
+import com.ratattack.game.model.entity.system.RenderSystem;
 import com.ratattack.game.model.entity.system.UserSystem;
 import com.ratattack.game.screens.GameScreen;
 import com.ratattack.game.screens.MenuScreen;
@@ -19,6 +20,7 @@ public class GameController {
 
     // Ashley
     private UserSystem userSystem;
+    private RenderSystem renderSystem;
     private RatSystem ratSystem;
     private GrandmotherSystem grandmotherSystem;
     private GrandchildSystem grandchildSystem;
@@ -73,6 +75,7 @@ public class GameController {
         //Add entities
         addEntities(ashleyWorld);
 
+        renderSystem = engine.getSystem(RenderSystem.class);
         userSystem = engine.getSystem(UserSystem.class);
         ratSystem = engine.getSystem(RatSystem.class);
         grandmotherSystem = engine.getSystem(GrandmotherSystem.class);
@@ -111,6 +114,7 @@ public class GameController {
         engine.addSystem(new GrandmotherSystem());
         engine.addSystem(new GrandchildSystem());
         engine.addSystem(new BulletSystem());
+        engine.addSystem(new RenderSystem(game.getBatch()));
     }
 
     public void addEntities(GameWorld world) {
