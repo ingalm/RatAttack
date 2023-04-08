@@ -10,7 +10,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.4.2'
-        classpath 'com.google.gms:google-services:4.3.15'
+        classpath 'com.google.gms:google-services:4.3.5'
     }
 }
 
@@ -65,10 +65,13 @@ project(":android") {
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86_64"
         api "com.badlogicgames.ashley:ashley:$ashleyVersion"
+
+        // Import the BoM for the Firebase platform
         implementation platform('com.google.firebase:firebase-bom:31.2.3')
-        implementation 'com.google.firebase:firebase-analytics'
-        implementation 'com.google.firebase:firebase-firestore:24.4.5'
-        implementation 'com.google.firebase:firebase-core:21.1.1'
+
+        // Add the dependency for the Realtime Database library
+        // When using the BoM, you don't specify versions in Firebase library dependencies
+        implementation 'com.google.firebase:firebase-database'
     }
 }
 

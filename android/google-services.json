@@ -1,41 +1,34 @@
 {
   "project_info": {
-    "project_number": "756958053196",
-    "project_id": "ratattack-4e0d4",
-    "storage_bucket": "ratattack-4e0d4.appspot.com"
+    "project_number": "5542360579",
+    "firebase_url": "https://ratattack-b29c8-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "ratattack-b29c8",
+    "storage_bucket": "ratattack-b29c8.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:756958053196:android:7f876425a0e28225ae05e9",
+        "mobilesdk_app_id": "1:5542360579:android:babdf21df57223eae98036",
         "android_client_info": {
           "package_name": "com.ratattack.game"
         }
       },
       "oauth_client": [
         {
-          "client_id": "756958053196-c44tharpsol261f44rfm3580ledlblkm.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.ratattack.game",
-            "certificate_hash": "23a41d0ae4f3b2019a1a22d0d9feb7a92660370b"
-          }
-        },
-        {
-          "client_id": "756958053196-g8pfu4s3tfh6at4c3kpks0vfva9tboqb.apps.googleusercontent.com",
+          "client_id": "5542360579-7r663nafqi6k0f41khph5hhkjdkolf7l.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAppG_7zjGqI2dDFg7wSMRmnTPozI0v5wk"
+          "current_key": "AIzaSyDvBl1IHzRoV5S8lCoB5-dOP3ozGGs3RZU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "756958053196-g8pfu4s3tfh6at4c3kpks0vfva9tboqb.apps.googleusercontent.com",
+              "client_id": "5542360579-7r663nafqi6k0f41khph5hhkjdkolf7l.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

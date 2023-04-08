@@ -11,6 +11,13 @@ public class RatAttack extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;
 
+	//FIREBASE
+	FirebaseInterface _FBIC;
+
+	public RatAttack(FirebaseInterface FBIC) {
+		_FBIC = FBIC;
+	}
+
 
 	//Dette skal egentlig flyttes til controller, men vet ikke helt hvordan enda. Må tenkes på rundt state pattern og update().
 	//private GameScreen gameScreen;
@@ -26,6 +33,10 @@ public class RatAttack extends ApplicationAdapter {
 
 		batch = new SpriteBatch();
 		img = new Texture("badlogic.jpg");
+
+		//FIREBASE
+		_FBIC.someFunction();
+		_FBIC.firebaseTest();
 	}
 
 	/*

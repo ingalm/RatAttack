@@ -1,7 +1,5 @@
 package com.ratattack.game.gamecontroller;
 
-import com.google.firebase.firestore.FirebaseFirestore;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,7 +7,6 @@ public class GameController {
 
     //Model
     //new Ashley ECS
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     public GameController() {
         // Create a new user with a first and last name
@@ -18,8 +15,6 @@ public class GameController {
         user.put("last", "Lovelace");
 
         // Add a new document with a generated ID
-        db.collection("users")
-                .add(user);
     }
 
     public void update() {
