@@ -11,59 +11,31 @@ import com.ratattack.game.gamecontroller.*;
 import com.ratattack.game.screens.*;
 
 public class RatAttack extends Game {
-	SpriteBatch batch;
 	Texture img;
-
-	//Dette skal egentlig flyttes til controller, men vet ikke helt hvordan enda. Må tenkes på rundt state pattern og update().
-	//private GameScreen gameScreen;
-	//private MenuScreen menuScreen;
-	//private OptionsScreen optionsScreen;
-	//private TutorialScreen tutorialScreen;
 
 	GameController gameController;
 	
 	@Override
 	public void create () {
-		gameController = new GameController(this);
-
+		gameController = GameController.getInstance();
+		gameController.setGame(this);
 		gameController.setStartScreen();
 
-		batch = new SpriteBatch();
 		img = new Texture("rats.png");
 	}
-
-
-	/* Eksempel på en Screen:
-
-	public class GameScreen implements Screen{
-
-    private MainClass mainClass;
-
-    public GameScreen(MainClass mc)
-    {
-        mainClass=mc;
-    }
-    // your methods (show,render, pause, etc)
-}
-
-Now when you want to change the screen just use in your screen
-
-mainClass.setMenuScreen();
-	 */
 
 	@Override
 	public void render () {
 		//ScreenUtils.clear(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		super.render();
+		gameController.update();
 
-		//Slett alt over etter hvert og kall på update i GameController
-		//gameController.update();
 	}
 	
 	@Override
 	public void dispose () {
-		batch.dispose();
+		gameController.getBatch().dispose();
 		img.dispose();
 	}
 
@@ -75,9 +47,5 @@ mainClass.setMenuScreen();
 	@Override
 	public void resume() {
 
-	}
-
-	public SpriteBatch getBatch() {
-		return batch;
 	}
 }

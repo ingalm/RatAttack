@@ -54,17 +54,24 @@ public class GameWorld {
         return bulletEntity;
     }
 
-    public Entity createRat() {
+    public void createRat() {
         Entity ratEntity = new Entity();
         ratEntity.add(new SpriteComponent());
         ratEntity.add((new VelocityComponent()));
         ratEntity.add(new PositionComponent());
 
-        Texture texture = new Texture("rats.png");
+        Texture texture = new Texture("rat.png");
         ratEntity.getComponent(SpriteComponent.class).sprite = new Sprite(texture);
 
+        PositionComponent position = ratEntity.getComponent(PositionComponent.class);
+        position.x = 0;
+        position.y = 0;
+
+        VelocityComponent velocity = ratEntity.getComponent(VelocityComponent.class);
+        velocity.x = 5;
+        velocity.y = 5;
+
         engine.addEntity(ratEntity);
-        return ratEntity;
     }
 
     public Entity createGrandchild() {

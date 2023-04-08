@@ -13,13 +13,14 @@ import com.ratattack.game.model.entity.components.SpriteComponent;
 
 public class RenderSystem extends IteratingSystem {
 
-    private static final Family renderFamily= Family.all(SpriteComponent.class, PositionComponent.class).get();
+    private static final Family renderFamily = Family.all(SpriteComponent.class, PositionComponent.class).get();
     private final SpriteBatch batch;
 
 
     public RenderSystem(SpriteBatch batch) {
         super(renderFamily);
         this.batch = batch;
+
     }
 
     @Override
