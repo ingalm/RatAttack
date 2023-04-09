@@ -1,4 +1,4 @@
-package com.ratattack.game.model.entity.system;
+package com.ratattack.game.model.system;
 
 import static com.ratattack.game.model.ComponentMappers.positionMapper;
 import static com.ratattack.game.model.ComponentMappers.spriteMapper;
@@ -8,8 +8,9 @@ import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.ratattack.game.model.entity.components.PositionComponent;
-import com.ratattack.game.model.entity.components.SpriteComponent;
+import com.ratattack.game.gamecontroller.GameController;
+import com.ratattack.game.model.components.PositionComponent;
+import com.ratattack.game.model.components.SpriteComponent;
 
 public class RenderSystem extends IteratingSystem {
 
