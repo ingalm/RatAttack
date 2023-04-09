@@ -37,6 +37,8 @@ public class RatAttack extends ApplicationAdapter {
 		//FIREBASE
 		_FBIC.someFunction();
 		_FBIC.firebaseTest();
+		_FBIC.setOnValueChangedListener();
+		_FBIC.setValueInDb("melding2", "Ny verdi har blitt gitt");
 	}
 
 	/*
