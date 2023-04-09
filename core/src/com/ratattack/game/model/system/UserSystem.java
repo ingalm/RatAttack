@@ -40,10 +40,10 @@ public class UserSystem extends IteratingSystem {
     }
 
     public void setCurrency(Entity userEntity, int currency) {
-        userMapper.get(userEntity).currency = currency;
+        userMapper.get(userEntity).balance = currency;
     }
 
     public int getCurrency(Entity userEntity) {
-        return userMapper.get(userEntity).currency;
+        return userMapper.get(userEntity).balance;
     }
 }
