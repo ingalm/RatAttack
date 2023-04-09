@@ -8,15 +8,12 @@ import com.ratattack.game.gamecontroller.GameController;
 
 public class ScreenFactory {
 
-    public static GameController controller = GameController.getInstance();
-    public static PooledEngine engine = controller.getEngine();
-
     public static Screen getScreen(String screenType) {
         switch (screenType) {
             case "MENU":
-                return new MenuScreen(controller);
+                return new MenuScreen();
             case "GAME":
-                return new GameScreen(controller, engine);
+                return new GameScreen();
             default:
                 return null;
         }

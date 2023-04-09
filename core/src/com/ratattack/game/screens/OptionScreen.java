@@ -7,9 +7,9 @@ import javax.swing.text.html.Option;
 
 public class OptionScreen implements Screen {
 
-    GameController gameController;
-    public OptionScreen(GameController gameController) {
-        this.gameController = gameController;
+    GameController gameController = GameController.getInstance();
+    public OptionScreen() {
+
     }
 
     @Override
