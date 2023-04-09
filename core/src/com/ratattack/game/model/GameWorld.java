@@ -4,27 +4,17 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.ratattack.game.model.entity.components.PositionComponent;
-import com.ratattack.game.model.entity.components.SpriteComponent;
-import com.ratattack.game.model.entity.components.UpgradeComponent;
-import com.ratattack.game.model.entity.components.UserComponent;
-import com.ratattack.game.model.entity.components.VelocityComponent;
+import com.ratattack.game.model.components.PositionComponent;
+import com.ratattack.game.model.components.SpriteComponent;
+import com.ratattack.game.model.components.UpgradeComponent;
+import com.ratattack.game.model.components.UserComponent;
+import com.ratattack.game.model.components.VelocityComponent;
 
 public class GameWorld {
     // add listeners
 
     final PooledEngine engine;
-    /*
-    private final EntityListener entityListener = new EntityListener() {
-        @Override
-        public void entityAdded(Entity entity) {
-        }
 
-        @Override
-        public void entityRemoved(Entity entity) {
-        }
-    };
-*/
     public GameWorld(PooledEngine engine) {
         this.engine = engine;
     }
@@ -64,12 +54,12 @@ public class GameWorld {
         ratEntity.getComponent(SpriteComponent.class).sprite = new Sprite(texture);
 
         PositionComponent position = ratEntity.getComponent(PositionComponent.class);
-        position.x = 0;
-        position.y = 0;
+        position.x = 100;
+        position.y = 1000;
 
         VelocityComponent velocity = ratEntity.getComponent(VelocityComponent.class);
-        velocity.x = 5;
-        velocity.y = 5;
+        velocity.x = 0;
+        velocity.y = -5;
 
         engine.addEntity(ratEntity);
     }
