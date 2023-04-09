@@ -1,14 +1,14 @@
 package com.ratattack.game.gamecontroller;
 
-import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.ratattack.game.RatAttack;
+import com.ratattack.game.model.Field;
 import com.ratattack.game.model.GameWorld;
-import com.ratattack.game.model.entity.system.MovementSystem;
-import com.ratattack.game.model.entity.system.RenderSystem;
-import com.ratattack.game.model.entity.system.UserSystem;
+import com.ratattack.game.model.system.MovementSystem;
+import com.ratattack.game.model.system.RenderSystem;
+import com.ratattack.game.model.system.UserSystem;
 import com.ratattack.game.screens.OptionScreen;
 import com.ratattack.game.screens.ScreenFactory;
 import com.ratattack.game.screens.TutorialScreen;
@@ -16,12 +16,15 @@ import com.ratattack.game.screens.TutorialScreen;
 public class GameController {
 
     private static final GameController instance = new GameController();
+    public Field field;
+    private Boolean paused = true;
 
-    private ScreenFactory screenFactory;
     SpriteBatch batch;
 
     // Ashley
-    RatAttack game;
+    private RatAttack game;
+
+    public static GameWorld ashleyWorld;
     public static PooledEngine engine;
 
     private GameController() {
@@ -34,14 +37,14 @@ public class GameController {
     }
 
     public void setStartScreen() {
-        setMenuScreen();
+        setGameScreen(); // Endre når man skal merge, skal være MenuScreen
     }
 
     private void setGameScreen() {
         try {
             game.setScreen(ScreenFactory.getScreen("GAME"));
         } catch (Exception e) {
-            System.out.println("No game instance set for the game controller");
+            System.out.println("No game instance set for the game controller"); //Denne slår ut, og jeg skjønner ikke helt hvorfor. Men alt funker allikevel
         }
     }
 
@@ -54,7 +57,7 @@ public class GameController {
     }
 
     private void setOptionsScreen() {
-        OptionScreen optionScreen = new OptionScreen(this);
+        OptionScreen optionScreen = new OptionScreen();
         game.setScreen(optionScreen);
     }
 
@@ -65,13 +68,13 @@ public class GameController {
 
     private void setUpAshley() {
         engine = new PooledEngine();
-        GameWorld ashleyWorld = new GameWorld(engine);
+        ashleyWorld = new GameWorld(engine);
 
         //Add systems to engine
         addSystems(engine);
 
         //Add entities
-        addEntities(ashleyWorld);
+        addEntities();
 
     }
 
@@ -81,15 +84,33 @@ public class GameController {
         engine.addSystem(new MovementSystem());
     }
 
-    public void addEntities(GameWorld world) {
-
+    public void addEntities() {
         //Create Rat
-        world.createRat();
+        ashleyWorld.createRat();
 
     }
 
     public void update() {
-        engine.update(Gdx.graphics.getDeltaTime());
+        if (!paused) {
+            engine.update(Gdx.graphics.getDeltaTime());
+        }
+    }
+
+    public void setUpGame() {
+        try {
+            field = new Field();
+        }
+        catch (Exception e) {
+            System.out.println("Error with field creation");
+        }
+    }
+
+    public void play() {
+        paused = false;
+    }
+
+    public void pause() {
+        paused = true;
     }
 
     public PooledEngine getEngine() {
@@ -101,6 +122,6 @@ public class GameController {
     }
 
     public void setGame(RatAttack game) {
-            this.game = game;
+        this.game = game;
     }
 }

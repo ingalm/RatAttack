@@ -5,10 +5,10 @@ import com.ratattack.game.gamecontroller.GameController;
 
 public class MenuScreen implements Screen {
 
-    GameController gameController;
+    GameController gameController = GameController.getInstance();
 
-    public MenuScreen(GameController gameController) {
-        this.gameController = gameController;
+    public MenuScreen() {
+
     }
 
     @Override
