@@ -8,7 +8,7 @@ public interface FirebaseInterface {
 
     public void firebaseTest();
 
-    public void setOnValueChangedListener();
+    public void setOnValueChangedListener(DataHolderClass dataholder);
 
     public void setValueInDb(String target, String value);
 

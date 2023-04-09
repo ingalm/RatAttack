@@ -15,7 +15,7 @@ public class DesktopInterfaceClass implements FirebaseInterface {
     }
 
     @Override
-    public void setOnValueChangedListener() {
+    public void setOnValueChangedListener(DataHolderClass dataholder) {
 
     }
 

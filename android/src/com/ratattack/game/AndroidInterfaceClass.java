@@ -39,7 +39,7 @@ public class AndroidInterfaceClass implements FirebaseInterface {
     }
 
     @Override
-    public void setOnValueChangedListener() {
+    public void setOnValueChangedListener(final DataHolderClass dataholder) {
         // denne lytter på "melding" fordi myRef er satt i konstruktøren
         myRef.addValueEventListener(new ValueEventListener() {
             // les fra database
@@ -49,6 +49,8 @@ public class AndroidInterfaceClass implements FirebaseInterface {
                 // denne lokasjonen er oppdatert
                 String value = snapshot.getValue(String.class);
                 Log.d(TAG,"Value is " + value);
+                dataholder.someValue = value;
+                dataholder.PrintSomeValue();
 
             }
 

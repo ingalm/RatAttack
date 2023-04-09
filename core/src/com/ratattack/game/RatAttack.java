@@ -13,6 +13,7 @@ public class RatAttack extends ApplicationAdapter {
 
 	//FIREBASE
 	FirebaseInterface _FBIC;
+	DataHolderClass dataHolder;
 
 	public RatAttack(FirebaseInterface FBIC) {
 		_FBIC = FBIC;
@@ -35,10 +36,12 @@ public class RatAttack extends ApplicationAdapter {
 		img = new Texture("badlogic.jpg");
 
 		//FIREBASE
+		dataHolder = new DataHolderClass();
 		_FBIC.someFunction();
 		_FBIC.firebaseTest();
-		_FBIC.setOnValueChangedListener();
-		_FBIC.setValueInDb("melding2", "Ny verdi har blitt gitt");
+		_FBIC.setOnValueChangedListener(dataHolder);
+		_FBIC.setValueInDb("melding2", "Ny verdi har blitt gitt nå");
+
 	}
 
 	/*
