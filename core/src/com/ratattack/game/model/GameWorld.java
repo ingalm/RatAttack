@@ -4,9 +4,12 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.ratattack.game.model.components.BalanceComponent;
+import com.ratattack.game.model.components.HealthComponent;
 import com.ratattack.game.model.components.PositionComponent;
 import com.ratattack.game.model.components.SpriteComponent;
-import com.ratattack.game.model.components.UpgradeComponent;
+import com.ratattack.game.model.components.PowerUpComponent;
+import com.ratattack.game.model.components.StrengthComponent;
 import com.ratattack.game.model.components.UserComponent;
 import com.ratattack.game.model.components.VelocityComponent;
 
@@ -39,7 +42,8 @@ public class GameWorld {
         bulletEntity.add(new PositionComponent());
         bulletEntity.add(new VelocityComponent());
         bulletEntity.add(new SpriteComponent());
-        bulletEntity.add(new UpgradeComponent());
+        bulletEntity.add(new PowerUpComponent());
+        bulletEntity.add(new StrengthComponent());
         engine.addEntity(bulletEntity);
         return bulletEntity;
     }
@@ -49,6 +53,7 @@ public class GameWorld {
         ratEntity.add(new SpriteComponent());
         ratEntity.add((new VelocityComponent()));
         ratEntity.add(new PositionComponent());
+        ratEntity.add(new HealthComponent());
 
         Texture texture = new Texture("rat.png");
         ratEntity.getComponent(SpriteComponent.class).sprite = new Sprite(texture);
@@ -69,6 +74,8 @@ public class GameWorld {
         grandChildEntity.add(new SpriteComponent());
         grandChildEntity.add((new VelocityComponent()));
         grandChildEntity.add(new PositionComponent());
+        grandChildEntity.add(new HealthComponent());
+        grandChildEntity.add(new BalanceComponent());
         engine.addEntity(grandChildEntity);
         return grandChildEntity;
     }
