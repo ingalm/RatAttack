@@ -10,14 +10,15 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.ratattack.game.gamecontroller.GameController;
 import com.ratattack.game.model.components.BalanceComponent;
+import com.ratattack.game.model.components.CollisionComponent;
 import com.ratattack.game.model.components.HealthComponent;
 import com.ratattack.game.model.components.PositionComponent;
 import com.ratattack.game.model.components.SpriteComponent;
 import com.ratattack.game.model.components.VelocityComponent;
 
-public class SpawnSystem extends IteratingSystem {
+import java.util.Random;
 
-    private GameController controller;
+public class SpawnSystem extends IteratingSystem {
     private long lastRatSpawnTime;
     private long lastGrandChildSpawnTime;
     private final long ratSpawnInterval;
@@ -57,6 +58,7 @@ public class SpawnSystem extends IteratingSystem {
         rat.add((new VelocityComponent()));
         rat.add(new PositionComponent());
         rat.add(new HealthComponent());
+        rat.add(new CollisionComponent());
 
         Texture texture = new Texture("rat.png");
         rat.getComponent(SpriteComponent.class).sprite = new Sprite(texture);
@@ -67,8 +69,17 @@ public class SpawnSystem extends IteratingSystem {
         position.y = 1000;
 
         VelocityComponent velocity = rat.getComponent(VelocityComponent.class);
+        Random random = new Random();
+        int min = 1;
+        int max = 10;
+        int randomNumber = random.nextInt(max - min + 1) + min;
+
         velocity.x = 0;
-        velocity.y = -5;
+        velocity.y = -randomNumber;
+
+        CollisionComponent collision = rat.getComponent(CollisionComponent.class);
+        collision.height = rat.getComponent(SpriteComponent.class).sprite.getTexture().getHeight();
+        collision.width = rat.getComponent(SpriteComponent.class).sprite.getTexture().getWidth();
 
         engine.addEntity(rat);
     }
