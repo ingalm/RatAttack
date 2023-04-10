@@ -75,7 +75,7 @@ public class SpawnSystem extends IteratingSystem {
 
     private void spawnGrandChild() {
         Entity grandChildEntity = new Entity();
-        grandChildEntity.add(new SpriteComponent());
+        //grandChildEntity.add(new SpriteComponent());
         grandChildEntity.add((new VelocityComponent()));
         grandChildEntity.add(new PositionComponent());
         grandChildEntity.add(new HealthComponent());
