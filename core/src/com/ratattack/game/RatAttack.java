@@ -31,6 +31,8 @@ public class RatAttack extends ApplicationAdapter {
 	@Override
 	public void create () {
 		gameController = new GameController();
+		new ScoreManager();
+
 
 		batch = new SpriteBatch();
 		img = new Texture("badlogic.jpg");
@@ -41,7 +43,7 @@ public class RatAttack extends ApplicationAdapter {
 		_FBIC.firebaseTest();
 		_FBIC.setOnValueChangedListener(dataHolder);
 		_FBIC.setValueInDb("melding2", "Ny verdi har blitt gitt nå");
-		_FBIC.addHighscore("marthe", 1000);
+
 	}
 
 	/*

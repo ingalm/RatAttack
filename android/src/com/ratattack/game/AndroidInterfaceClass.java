@@ -4,6 +4,8 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -12,18 +14,21 @@ import com.google.firebase.database.ValueEventListener;
 
 import static android.content.ContentValues.TAG;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 // Her skal logikk for Firebase være!!
 public class AndroidInterfaceClass implements FirebaseInterface {
     FirebaseDatabase database;
     DatabaseReference myRef;
 
-    DatabaseReference users;
+    DatabaseReference highscores;
 
     public AndroidInterfaceClass() {
 
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("melding");
-        users = database.getReference("users");
+        highscores = database.getReference("highscores");
     }
 
     @Override
@@ -66,6 +71,23 @@ public class AndroidInterfaceClass implements FirebaseInterface {
     }
 
     @Override
+    public void getHighscores(ArrayList<Score> dataHolder) {
+        System.out.println("Getting highcores");
+        highscores.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                System.out.println("Got highcores");
+                Iterable<DataSnapshot> response = task.getResult().getChildren();
+                for (DataSnapshot child : response) {
+                    dataHolder.add(child.getValue(Score.class));
+                }
+                Collections.sort(dataHolder);
+            }
+        });
+    }
+
+
+    @Override
     public void setValueInDb(String target, String value) {
         // target blir opprettet hvis ikke eksisterer, i db
         myRef = database.getReference(target);
@@ -74,8 +96,10 @@ public class AndroidInterfaceClass implements FirebaseInterface {
 
 
     @Override
-    public void addHighscore(String username, Integer highscore) {
-        User user = new User(username, highscore);
-        users.child(username).setValue(highscore);
+    public void addHighscore(Score score) {
+        highscores.push().setValue(score);
     }
+
+
+
 }
