@@ -22,5 +22,10 @@ public class CoreInterfaceClass implements FirebaseInterface {
 
     }
 
+    @Override
+    public void addHighscore(String username, Integer highscore) {
+
+    }
+
 
 }

@@ -23,4 +23,10 @@ public class DesktopInterfaceClass implements FirebaseInterface {
     public void setValueInDb(String target, String value) {
 
     }
+
+    @Override
+    public void addHighscore(String username, Integer highscore) {
+
+    }
+
 }

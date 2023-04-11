@@ -41,7 +41,7 @@ public class RatAttack extends ApplicationAdapter {
 		_FBIC.firebaseTest();
 		_FBIC.setOnValueChangedListener(dataHolder);
 		_FBIC.setValueInDb("melding2", "Ny verdi har blitt gitt nå");
-
+		_FBIC.addHighscore("marthe", 1000);
 	}
 
 	/*

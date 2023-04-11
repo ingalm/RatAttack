@@ -12,4 +12,6 @@ public interface FirebaseInterface {
 
     public void setValueInDb(String target, String value);
 
+    public void addHighscore(String username, Integer highscore);
+
 }

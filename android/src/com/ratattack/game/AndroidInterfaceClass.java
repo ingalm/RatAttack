@@ -17,10 +17,13 @@ public class AndroidInterfaceClass implements FirebaseInterface {
     FirebaseDatabase database;
     DatabaseReference myRef;
 
+    DatabaseReference users;
+
     public AndroidInterfaceClass() {
 
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("melding");
+        users = database.getReference("users");
     }
 
     @Override
@@ -31,7 +34,7 @@ public class AndroidInterfaceClass implements FirebaseInterface {
     @Override
     public void firebaseTest() {
         if (myRef != null) {
-            myRef.setValue("HALLA VERDEN!");
+            myRef.setValue("HALLA balla!");
         }
         else {
             System.out.println("DatabaseReference was not set -> could not write to DB");
@@ -67,5 +70,12 @@ public class AndroidInterfaceClass implements FirebaseInterface {
         // target blir opprettet hvis ikke eksisterer, i db
         myRef = database.getReference(target);
         myRef.setValue(value);
+    }
+
+
+    @Override
+    public void addHighscore(String username, Integer highscore) {
+        User user = new User(username, highscore);
+        users.child(username).setValue(highscore);
     }
 }
