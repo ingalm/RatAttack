@@ -6,6 +6,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.ratattack.game.RatAttack;
 import com.ratattack.game.model.Field;
 import com.ratattack.game.model.GameWorld;
+import com.ratattack.game.model.state.MenuState;
+import com.ratattack.game.model.state.StateManager;
 import com.ratattack.game.model.system.CollisionSystem;
 import com.ratattack.game.model.system.MovementSystem;
 import com.ratattack.game.model.system.RenderSystem;
@@ -33,9 +35,15 @@ public class GameController {
     private static GameWorld ashleyWorld;
     private static PooledEngine engine;
 
+    public StateManager stateManager;
+
     private GameController() {
         batch = new SpriteBatch();
         setUpAshley();
+    }
+
+    public RatAttack getGame(){
+        return game;
     }
 
     public static GameController getInstance() {
@@ -43,7 +51,9 @@ public class GameController {
     }
 
     public void setStartScreen() {
-        setGameScreen(); // Endre når man skal merge, skal være MenuScreen
+
+        stateManager = new StateManager();
+        stateManager.push(new MenuState(stateManager));
     }
 
     private void setGameScreen() {
@@ -68,7 +78,7 @@ public class GameController {
     }
 
     private void setTutorialScreen() {
-        TutorialScreen tutorialScreen = new TutorialScreen(this);
+        TutorialScreen tutorialScreen = new TutorialScreen();
         game.setScreen(tutorialScreen);
     }
 
@@ -136,4 +146,5 @@ public class GameController {
     public void setGame(RatAttack game) {
         this.game = game;
     }
+
 }

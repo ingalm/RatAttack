@@ -14,6 +14,8 @@ public class ScreenFactory {
                 return new MenuScreen();
             case "GAME":
                 return new GameScreen();
+            case "TUTORIAL":
+                return new TutorialScreen();
             default:
                 return null;
         }
