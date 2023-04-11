@@ -6,14 +6,20 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.ratattack.game.RatAttack;
 import com.ratattack.game.model.Field;
 import com.ratattack.game.model.GameWorld;
+import com.ratattack.game.model.system.CollisionSystem;
 import com.ratattack.game.model.system.MovementSystem;
 import com.ratattack.game.model.system.RenderSystem;
+import com.ratattack.game.model.system.SpawnSystem;
 import com.ratattack.game.model.system.UserSystem;
 import com.ratattack.game.screens.OptionScreen;
 import com.ratattack.game.screens.ScreenFactory;
 import com.ratattack.game.screens.TutorialScreen;
 
 public class GameController {
+
+    //Settings
+    private final long ratSpawnrate = 2000;
+    private final long grandChildSpawnrate = 2000;
 
     private static final GameController instance = new GameController();
     public Field field;
@@ -24,8 +30,8 @@ public class GameController {
     // Ashley
     private RatAttack game;
 
-    public static GameWorld ashleyWorld;
-    public static PooledEngine engine;
+    private static GameWorld ashleyWorld;
+    private static PooledEngine engine;
 
     private GameController() {
         batch = new SpriteBatch();
@@ -82,11 +88,13 @@ public class GameController {
         engine.addSystem(new UserSystem());
         engine.addSystem(new RenderSystem(batch));
         engine.addSystem(new MovementSystem());
+        engine.addSystem(new SpawnSystem(engine, ratSpawnrate, grandChildSpawnrate));
+        engine.addSystem(new CollisionSystem(engine));
     }
 
     public void addEntities() {
         //Create Rat
-        ashleyWorld.createRat();
+        //ashleyWorld.createRat();
 
     }
 
@@ -115,6 +123,10 @@ public class GameController {
 
     public PooledEngine getEngine() {
         return engine;
+    }
+
+    public GameWorld getAshleyWorld() {
+        return ashleyWorld;
     }
 
     public SpriteBatch getBatch() {
