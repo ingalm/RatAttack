@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.ratattack.game.RatAttack;
 import com.ratattack.game.model.Field;
 import com.ratattack.game.model.GameWorld;
+import com.ratattack.game.model.system.BoundsSystem;
 import com.ratattack.game.model.system.CollisionSystem;
 import com.ratattack.game.model.system.MovementSystem;
 import com.ratattack.game.model.system.RenderSystem;
@@ -90,6 +91,7 @@ public class GameController {
         engine.addSystem(new MovementSystem());
         engine.addSystem(new SpawnSystem(engine, ratSpawnrate, grandChildSpawnrate));
         engine.addSystem(new CollisionSystem(engine));
+        engine.addSystem(new BoundsSystem());
     }
 
     public void addEntities() {

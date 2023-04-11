@@ -1,18 +1,22 @@
 package com.ratattack.game.model.system;
 
+import static com.ratattack.game.model.ComponentMappers.boundsMapper;
+
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.ashley.systems.IteratingSystem;
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.Shape2D;
 import com.badlogic.gdx.utils.TimeUtils;
-import com.ratattack.game.gamecontroller.GameController;
 import com.ratattack.game.model.components.BalanceComponent;
+import com.ratattack.game.model.components.BoundsComponent;
+import com.ratattack.game.model.components.CircleBoundsComponent;
 import com.ratattack.game.model.components.CollisionComponent;
 import com.ratattack.game.model.components.HealthComponent;
 import com.ratattack.game.model.components.PositionComponent;
+import com.ratattack.game.model.components.RectangleBoundsComponent;
 import com.ratattack.game.model.components.SpriteComponent;
 import com.ratattack.game.model.components.VelocityComponent;
 
@@ -58,7 +62,7 @@ public class SpawnSystem extends IteratingSystem {
         rat.add((new VelocityComponent()));
         rat.add(new PositionComponent());
         rat.add(new HealthComponent());
-        rat.add(new CollisionComponent());
+        rat.add(new CircleBoundsComponent());
 
         Texture texture = new Texture("rat.png");
         rat.getComponent(SpriteComponent.class).sprite = new Sprite(texture);
@@ -77,9 +81,9 @@ public class SpawnSystem extends IteratingSystem {
         velocity.x = 0;
         velocity.y = -randomNumber;
 
-        CollisionComponent collision = rat.getComponent(CollisionComponent.class);
-        collision.height = rat.getComponent(SpriteComponent.class).sprite.getTexture().getHeight();
-        collision.width = rat.getComponent(SpriteComponent.class).sprite.getTexture().getWidth();
+        BoundsComponent bounds = rat.getComponent(CircleBoundsComponent.class);
+        bounds.setSize(100, 100);
+        bounds.setCenter(position.x, position.y);
 
         engine.addEntity(rat);
     }
