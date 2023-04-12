@@ -1,6 +1,8 @@
-package com.ratattack.game.model.state;
+package com.ratattack.game.screens.state;
 
-public interface IState {
+import com.ratattack.game.screens.Screen;
+
+public interface IScreenState {
 
     /***
      * TODO: LEGG TIL KOMMENTARER
@@ -10,7 +12,7 @@ public interface IState {
      * Sends a call to the game state manager to change state
      * @param state: The state to change to.
      */
-    void changeState(IState state);
+    void changeState(IScreenState state);
 
     /***
      * Checks whether the state should change based on the screen type sent in.
@@ -28,6 +30,14 @@ public interface IState {
     void changeScreen(String type);
 
     void renderScreen();
+
+    void next(Screen screen);
+
+    void prev(Screen screen);
+
+
+
+
 
 
 

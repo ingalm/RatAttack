@@ -42,7 +42,6 @@ public class GameScreen implements Screen {
                 //bytter screen basert på state
                 gameController.stateManager.changeScreen(nextScreen);
 
-
             }
         });
         return b;
@@ -60,8 +59,6 @@ public class GameScreen implements Screen {
         stage.addActor(goToTutorialScreenB);
 
     }
-
-
     @Override
     public void render(float delta) {
 

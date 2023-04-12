@@ -1,4 +1,4 @@
-package com.ratattack.game.model.state;
+package com.ratattack.game.screens.state;
 
 import com.ratattack.game.gamecontroller.GameController;
 
@@ -11,7 +11,7 @@ public class StateManager {
      * TODO: LEGG TIL KOMMENTARER
      * */
 
-    public Stack<IState> states;
+    public Stack<IScreenState> states;
     public GameController gameController = GameController.getInstance();
 
     /***
@@ -22,7 +22,7 @@ public class StateManager {
         states  = new Stack<>();
     }
 
-    public void push(IState state){
+    public void push(IScreenState state){
         states.push(state);
     }
 
@@ -30,7 +30,7 @@ public class StateManager {
         states.pop();
     }
 
-    void changeState(IState state){
+    void changeState(IScreenState state){
         pop();
         states.push(state);
     }

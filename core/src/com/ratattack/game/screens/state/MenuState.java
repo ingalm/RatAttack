@@ -1,9 +1,11 @@
-package com.ratattack.game.model.state;
+package com.ratattack.game.screens.state;
 
 import com.badlogic.gdx.Screen;
 import com.ratattack.game.screens.ScreenFactory;
 
-public class MenuState implements IState {
+import java.time.Clock;
+
+public class MenuState implements IScreenState {
 
     /***
      * TODO: LEGG TIL KOMMENTARER
@@ -21,9 +23,11 @@ public class MenuState implements IState {
     }
 
     @Override
-    public void changeState(IState state) {
+    public void changeState(IScreenState state) {
         stateManager.changeState(state);
+        System.out.println("the state is menu and is now changing");
     }
+
 
     @Override
     public boolean shouldChangeState(String type) {
@@ -34,12 +38,13 @@ public class MenuState implements IState {
     @Override
     public void changeScreen(String type) {
         if(shouldChangeState(type)){
-            IState state = type.equalsIgnoreCase("GAME") ? new GameState(stateManager): new TutorialState(stateManager);
+            IScreenState state = type.equalsIgnoreCase("GAME") ? new GameState(stateManager): new TutorialState(stateManager);
             changeState(state);
         } else {
             currentScreen = ScreenFactory.getScreen(type);
             renderScreen();
         }
+        System.out.println("the screen is now changing to " + type);
 
     }
 
@@ -48,6 +53,16 @@ public class MenuState implements IState {
 
         stateManager.gameController.getGame().setScreen(currentScreen);
 
+
+    }
+
+    @Override
+    public void next(com.ratattack.game.screens.Screen screen) {
+
+    }
+
+    @Override
+    public void prev(com.ratattack.game.screens.Screen screen) {
 
     }
 }
