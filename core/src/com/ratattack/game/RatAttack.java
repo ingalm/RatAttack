@@ -1,14 +1,16 @@
 package com.ratattack.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.ratattack.game.gamecontroller.*;
 import com.ratattack.game.screens.*;
 
-public class RatAttack extends ApplicationAdapter {
-	SpriteBatch batch;
+public class RatAttack extends Game {
 	Texture img;
 
 	//FIREBASE
@@ -46,59 +48,31 @@ public class RatAttack extends ApplicationAdapter {
 
 	}
 
-	/*
-	setGameScreen()
-	{
-		gameScreen=new GameScreen(this);
-		setScreen(gameScreen);
+		img = new Texture("rats.png");
 	}
-	setMenuScreen()
-	{
-		menuScreen=new menuScreen(this);
-		setScreen(menuScreen);
-	}
-	setOptionsScreen()
-	{
-		optionsScreen=new OptionsScreen(this);
-		setScreen(optionsScreen);
-	}
-	setTutorialScreen() {
-		tutorialScreen = new TutorialScreen(this);
-		setScreen(tutorialScreen);
-	}
-	 */
-
-	/* Eksempel på en Screen:
-
-	public class GameScreen implements Screen{
-
-    private MainClass mainClass;
-
-    public GameScreen(MainClass mc)
-    {
-        mainClass=mc;
-    }
-    // your methods (show,render, pause, etc)
-}
-
-Now when you want to change the screen just use in your screen
-
-mainClass.setMenuScreen();
-	 */
 
 	@Override
 	public void render () {
-		ScreenUtils.clear(1, 0, 0, 1);
-		batch.begin();
-		batch.draw(img, 0, 0);
-		batch.end();
+		//ScreenUtils.clear(1, 0, 0, 1);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		super.render();
+		gameController.update();
 
-		//Slett alt over etter hvert og kall på update i GameController
 	}
 	
 	@Override
 	public void dispose () {
-		batch.dispose();
+		gameController.getBatch().dispose();
 		img.dispose();
+	}
+
+	@Override
+	public void pause() {
+
+	}
+
+	@Override
+	public void resume() {
+
 	}
 }
