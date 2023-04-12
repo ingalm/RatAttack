@@ -56,6 +56,9 @@ public class RenderSystem extends IteratingSystem {
         batch.draw(texture, positionComponent.x, positionComponent.y);
         batch.end();
 
+        if (bounds == null) return;//If the entity does not have bounds, don´t render the bound or remove entity
+
+        //Check if the entity has moved out of the screen
         Rectangle windowBounds = new Rectangle(0, 0, windowWidth, windowHeight);
 
         Circle circle = null;

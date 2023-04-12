@@ -16,7 +16,6 @@ public class BoundsSystem extends IteratingSystem {
 
     private static final Family boundsFamily = Family.one(RectangleBoundsComponent.class, CircleBoundsComponent.class).get();
 
-
     public BoundsSystem() {
         super(boundsFamily);
     }
