@@ -1,21 +1,7 @@
 package com.ratattack.game.gamecontroller;
 
-import com.badlogic.ashley.core.PooledEngine;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.ratattack.game.RatAttack;
-import com.ratattack.game.model.Field;
-import com.ratattack.game.model.GameWorld;
-import com.ratattack.game.model.state.MenuState;
-import com.ratattack.game.model.state.StateManager;
-import com.ratattack.game.model.system.CollisionSystem;
-import com.ratattack.game.model.system.MovementSystem;
-import com.ratattack.game.model.system.RenderSystem;
-import com.ratattack.game.model.system.SpawnSystem;
-import com.ratattack.game.model.system.UserSystem;
-import com.ratattack.game.screens.OptionScreen;
-import com.ratattack.game.screens.ScreenFactory;
-import com.ratattack.game.screens.TutorialScreen;
+import java.util.HashMap;
+import java.util.Map;
 
 public class GameController {
 
@@ -50,62 +36,13 @@ public class GameController {
         return instance;
     }
 
-    public void setStartScreen() {
+    public GameController() {
+        // Create a new user with a first and last name
+        Map<String, Object> user = new HashMap<>();
+        user.put("first", "Ada");
+        user.put("last", "Lovelace");
 
-        stateManager = new StateManager();
-        stateManager.push(new MenuState(stateManager));
-    }
-
-    private void setGameScreen() {
-        try {
-            game.setScreen(ScreenFactory.getScreen("GAME"));
-        } catch (Exception e) {
-            System.out.println("No game instance set for the game controller"); //Denne slår ut, og jeg skjønner ikke helt hvorfor. Men alt funker allikevel
-        }
-    }
-
-    private void setMenuScreen() {
-        try {
-            game.setScreen(ScreenFactory.getScreen("MENU"));
-        } catch (Exception e) {
-            System.out.println("No game instance set for the game controller");
-        }
-    }
-
-    private void setOptionsScreen() {
-        OptionScreen optionScreen = new OptionScreen();
-        game.setScreen(optionScreen);
-    }
-
-    private void setTutorialScreen() {
-        TutorialScreen tutorialScreen = new TutorialScreen();
-        game.setScreen(tutorialScreen);
-    }
-
-    private void setUpAshley() {
-        engine = new PooledEngine();
-        ashleyWorld = new GameWorld(engine);
-
-        //Add systems to engine
-        addSystems(engine);
-
-        //Add entities
-        addEntities();
-
-    }
-
-    public void addSystems(PooledEngine engine) {
-        engine.addSystem(new UserSystem());
-        engine.addSystem(new RenderSystem(batch));
-        engine.addSystem(new MovementSystem());
-        engine.addSystem(new SpawnSystem(engine, ratSpawnrate, grandChildSpawnrate));
-        engine.addSystem(new CollisionSystem(engine));
-    }
-
-    public void addEntities() {
-        //Create Rat
-        //ashleyWorld.createRat();
-
+        // Add a new document with a generated ID
     }
 
     public void update() {

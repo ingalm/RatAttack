@@ -13,13 +13,40 @@ import com.ratattack.game.screens.*;
 public class RatAttack extends Game {
 	Texture img;
 
+	//FIREBASE
+	FirebaseInterface _FBIC;
+	DataHolderClass dataHolder;
+
+	public RatAttack(FirebaseInterface FBIC) {
+		_FBIC = FBIC;
+	}
+
+
+	//Dette skal egentlig flyttes til controller, men vet ikke helt hvordan enda. Må tenkes på rundt state pattern og update().
+	//private GameScreen gameScreen;
+	//private MenuScreen menuScreen;
+	//private OptionsScreen optionsScreen;
+	//private TutorialScreen tutorialScreen;
+
 	GameController gameController;
 	
 	@Override
 	public void create () {
-		gameController = GameController.getInstance();
-		gameController.setGame(this);
-		gameController.setStartScreen();
+		gameController = new GameController();
+		new ScoreManager();
+
+
+		batch = new SpriteBatch();
+		img = new Texture("badlogic.jpg");
+
+		//FIREBASE
+		dataHolder = new DataHolderClass();
+		_FBIC.someFunction();
+		_FBIC.firebaseTest();
+		_FBIC.setOnValueChangedListener(dataHolder);
+		_FBIC.setValueInDb("melding2", "Ny verdi har blitt gitt nå");
+
+	}
 
 		img = new Texture("rats.png");
 	}
