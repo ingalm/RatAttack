@@ -58,7 +58,7 @@ public class RatAttack extends Game {
 		super.render();
 		batch.begin();
 		gameController.update();
-		//highscore.render(batch);
+		highscore.render(batch);
 		batch.end();
 
 	}
