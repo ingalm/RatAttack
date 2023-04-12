@@ -155,4 +155,7 @@ public class GameController {
         return _FBIC;
     }
 
+    public void  setFirebaseInterface(FirebaseInterface FBIC) {
+        this._FBIC = FBIC;
+    }
 }

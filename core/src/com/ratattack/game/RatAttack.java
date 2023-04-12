@@ -37,6 +37,7 @@ public class RatAttack extends Game {
 	@Override
 	public void create () {
 		gameController = GameController.getInstance();
+		gameController.setFirebaseInterface(_FBIC);
 		gameController.setGame(this);
 		gameController.setStartScreen();
 		batch = new SpriteBatch();
@@ -49,6 +50,7 @@ public class RatAttack extends Game {
 		_FBIC.firebaseTest();
 		//_FBIC.setOnValueChangedListener(dataHolder);
 		_FBIC.setValueInDb("melding2", "Ny verdi har blitt gitt nå");
+		highscore.submitHighscore("Anette", 8000);
 	}
 
 	@Override
@@ -58,7 +60,7 @@ public class RatAttack extends Game {
 		super.render();
 		batch.begin();
 		gameController.update();
-		highscore.render(batch);
+		//highscore.render(batch);
 		batch.end();
 
 	}
