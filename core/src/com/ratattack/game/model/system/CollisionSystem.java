@@ -89,7 +89,5 @@ public class CollisionSystem extends IteratingSystem {
                 }
             }
         }*/
-
-
     }
 }
