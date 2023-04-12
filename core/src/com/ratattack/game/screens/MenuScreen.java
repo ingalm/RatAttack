@@ -17,9 +17,11 @@ import com.ratattack.game.gamecontroller.GameController;
 
 public class MenuScreen implements Screen {
 
+
     /***
      * TODO: LEGG TIL KOMMENTARER
      * */
+
 
     GameController gameController = GameController.getInstance();
 

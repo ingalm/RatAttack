@@ -1,15 +1,12 @@
 package com.ratattack.game.screens;
 
-import com.badlogic.ashley.core.PooledEngine;
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Screen;
 import com.ratattack.game.FirebaseInterface;
-import com.ratattack.game.RatAttack;
 import com.ratattack.game.gamecontroller.GameController;
 
 public class ScreenFactory {
 
-    static FirebaseInterface _FBIC = GameController.getInstance().getFirebaseInterface();
+    static FirebaseInterface _FBIC =  GameController.getInstance().getFirebaseInterface();
 
     public static Screen getScreen(String screenType) {
         switch (screenType) {

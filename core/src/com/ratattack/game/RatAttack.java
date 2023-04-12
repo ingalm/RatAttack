@@ -18,6 +18,7 @@ public class RatAttack extends Game {
 	DataHolderClass dataHolder;
 
 	SpriteBatch batch;
+	Highscore highscore;
 
 	public RatAttack(FirebaseInterface FBIC) {
 		_FBIC = FBIC;
@@ -38,15 +39,15 @@ public class RatAttack extends Game {
 		gameController = GameController.getInstance();
 		gameController.setGame(this);
 		gameController.setStartScreen();
-
 		batch = new SpriteBatch();
+		highscore = new Highscore(_FBIC);
 
 
 		//FIREBASE
 		dataHolder = new DataHolderClass();
 		_FBIC.someFunction();
 		_FBIC.firebaseTest();
-		_FBIC.setOnValueChangedListener(dataHolder);
+		//_FBIC.setOnValueChangedListener(dataHolder);
 		_FBIC.setValueInDb("melding2", "Ny verdi har blitt gitt nå");
 	}
 
@@ -55,7 +56,10 @@ public class RatAttack extends Game {
 		//ScreenUtils.clear(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		super.render();
+		batch.begin();
 		gameController.update();
+		//highscore.render(batch);
+		batch.end();
 
 	}
 	
