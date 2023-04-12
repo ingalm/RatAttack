@@ -4,5 +4,9 @@ import com.badlogic.ashley.core.Component;
 
 public class HealthComponent implements Component {
 
-    int health;
+    private int health;
+
+    public void setHealth(int x) {
+        this.health = x;
+    }
 }

@@ -36,6 +36,7 @@ public class RatAttack extends Game {
 	@Override
 	public void dispose () {
 		gameController.getBatch().dispose();
+		gameController.getShapeRenderer().dispose();
 		img.dispose();
 	}
 

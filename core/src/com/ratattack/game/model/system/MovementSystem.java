@@ -1,13 +1,11 @@
 package com.ratattack.game.model.system;
 
-import static com.ratattack.game.model.ComponentMappers.boundsMapper;
 import static com.ratattack.game.model.ComponentMappers.positionMapper;
 import static com.ratattack.game.model.ComponentMappers.velocityMapper;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
-import com.ratattack.game.model.components.BoundsComponent;
 import com.ratattack.game.model.components.PositionComponent;
 import com.ratattack.game.model.components.VelocityComponent;
 

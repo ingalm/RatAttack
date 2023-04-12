@@ -14,11 +14,11 @@ public class RectangleBoundsComponent extends BoundsComponent{
 
     @Override
     public void setCenter(int x, int y) {
-
+        bounds.setCenter(x, y);
     }
 
     @Override
     public void setSize(int width, int height) {
-
+        bounds.setSize(width, height);
     }
 }

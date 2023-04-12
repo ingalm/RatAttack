@@ -1,19 +1,14 @@
 package com.ratattack.game.model.system;
 
-import static com.ratattack.game.model.ComponentMappers.boundsMapper;
-
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.math.Shape2D;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.ratattack.game.model.components.BalanceComponent;
 import com.ratattack.game.model.components.BoundsComponent;
-import com.ratattack.game.model.components.CircleBoundsComponent;
-import com.ratattack.game.model.components.CollisionComponent;
 import com.ratattack.game.model.components.HealthComponent;
 import com.ratattack.game.model.components.PositionComponent;
 import com.ratattack.game.model.components.RectangleBoundsComponent;
@@ -62,7 +57,7 @@ public class SpawnSystem extends IteratingSystem {
         rat.add((new VelocityComponent()));
         rat.add(new PositionComponent());
         rat.add(new HealthComponent());
-        rat.add(new CircleBoundsComponent());
+        rat.add(new RectangleBoundsComponent());
 
         Texture texture = new Texture("rat.png");
         rat.getComponent(SpriteComponent.class).sprite = new Sprite(texture);
@@ -81,9 +76,11 @@ public class SpawnSystem extends IteratingSystem {
         velocity.x = 0;
         velocity.y = -randomNumber;
 
-        BoundsComponent bounds = rat.getComponent(CircleBoundsComponent.class);
-        bounds.setSize(100, 100);
+        BoundsComponent bounds = rat.getComponent(RectangleBoundsComponent.class);
+        bounds.setSize(texture.getWidth(), (2*texture.getHeight())/3);
         bounds.setCenter(position.x, position.y);
+
+        rat.getComponent(HealthComponent.class).setHealth(300);
 
         engine.addEntity(rat);
     }
