@@ -1,4 +1,4 @@
-package com.ratattack.game.screens;
+package com.ratattack.game.view.screens;
 
 import com.badlogic.gdx.Screen;
 import com.ratattack.game.gamecontroller.GameController;

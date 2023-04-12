@@ -1,4 +1,4 @@
-package com.ratattack.game.model.state;
+package com.ratattack.game.view.state;
 
 import com.ratattack.game.gamecontroller.GameController;
 

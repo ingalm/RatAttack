@@ -1,10 +1,6 @@
-package com.ratattack.game.screens;
+package com.ratattack.game.view.screens;
 
-import com.badlogic.ashley.core.PooledEngine;
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Screen;
-import com.ratattack.game.RatAttack;
-import com.ratattack.game.gamecontroller.GameController;
 
 public class ScreenFactory {
 
