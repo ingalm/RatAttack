@@ -30,6 +30,8 @@ public class MenuScreen implements Screen {
     Texture background = new Texture("bluebackground.png");
     Texture pinkButton = new Texture("pinkbutton.png");
     Texture purpleButton = new Texture("purplebutton.png");
+
+    Texture purpleButton2 = new Texture("rat.png");
     int width = Gdx.graphics.getWidth();
     int height = Gdx.graphics.getHeight();
 
@@ -47,6 +49,7 @@ public class MenuScreen implements Screen {
 
         Button goToGameScreenB = makeButton(pinkButton,2f,"GAME");
         Button goToTutorialScreenB = makeButton(purpleButton,5f,"TUTORIAL");
+        Button goToHighscoreScreenB = makeButton(purpleButton2, 20f, "HIGHSCORE");
 
 
         font = new BitmapFont();
@@ -55,6 +58,7 @@ public class MenuScreen implements Screen {
 
         stage.addActor(goToGameScreenB);
         stage.addActor(goToTutorialScreenB);
+        stage.addActor(goToHighscoreScreenB);
 
 
     }

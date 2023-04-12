@@ -17,8 +17,6 @@ public class RatAttack extends Game {
 	FirebaseInterface _FBIC;
 	DataHolderClass dataHolder;
 
-	Highscore highscore;
-
 	SpriteBatch batch;
 
 	public RatAttack(FirebaseInterface FBIC) {
@@ -41,8 +39,6 @@ public class RatAttack extends Game {
 		gameController.setGame(this);
 		gameController.setStartScreen();
 
-		new ScoreManager();
-		highscore = new Highscore(_FBIC);
 		batch = new SpriteBatch();
 
 
@@ -58,11 +54,8 @@ public class RatAttack extends Game {
 	public void render () {
 		//ScreenUtils.clear(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		batch.begin();
 		super.render();
 		gameController.update();
-		highscore.render(batch);
-		batch.end();
 
 	}
 	

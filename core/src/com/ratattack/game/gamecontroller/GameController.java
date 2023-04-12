@@ -3,6 +3,7 @@ package com.ratattack.game.gamecontroller;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.ratattack.game.FirebaseInterface;
 import com.ratattack.game.RatAttack;
 import com.ratattack.game.model.Field;
 import com.ratattack.game.model.GameWorld;
@@ -36,6 +37,8 @@ public class GameController {
     private static PooledEngine engine;
 
     public StateManager stateManager;
+
+    FirebaseInterface _FBIC;
 
     private GameController() {
         batch = new SpriteBatch();
@@ -146,6 +149,10 @@ public class GameController {
 
     public void setGame(RatAttack game) {
         this.game = game;
+    }
+
+    public FirebaseInterface getFirebaseInterface() {
+        return _FBIC;
     }
 
 }
