@@ -54,7 +54,7 @@ public class SpawnSystem extends IteratingSystem {
     private void spawnRat() {
         Entity rat = new Entity();
         rat.add(new SpriteComponent());
-        rat.add((new VelocityComponent()));
+        rat.add(new VelocityComponent());
         rat.add(new PositionComponent());
         rat.add(new HealthComponent());
         rat.add(new RectangleBoundsComponent());

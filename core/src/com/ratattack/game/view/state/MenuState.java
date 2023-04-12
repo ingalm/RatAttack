@@ -1,7 +1,7 @@
-package com.ratattack.game.model.state;
+package com.ratattack.game.view.state;
 
 import com.badlogic.gdx.Screen;
-import com.ratattack.game.screens.ScreenFactory;
+import com.ratattack.game.view.screens.ScreenFactory;
 
 public class MenuState implements IState {
 
@@ -9,7 +9,7 @@ public class MenuState implements IState {
      * TODO: LEGG TIL KOMMENTARER
      * */
 
-    private StateManager stateManager;
+    private final StateManager stateManager;
     private Screen currentScreen;
 
     public MenuState(StateManager stateManager) {

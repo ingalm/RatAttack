@@ -1,4 +1,4 @@
-package com.ratattack.game.screens;
+package com.ratattack.game.view.screens;
 
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.Gdx;
@@ -23,7 +23,7 @@ public class GameScreen implements Screen {
      * */
 
 
-    private GameController gameController = GameController.getInstance();
+    private final GameController gameController = GameController.getInstance();
     Texture pinkButton = new Texture("pinkbutton.png");
     Texture purpleButton = new Texture("purplebutton.png");
     private Stage stage;
@@ -100,9 +100,5 @@ public class GameScreen implements Screen {
     @Override
     public void dispose() {
         stage.dispose();
-
-
-
     }
-
 }

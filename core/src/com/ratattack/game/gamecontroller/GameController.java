@@ -9,16 +9,16 @@ import com.ratattack.game.RatAttack;
 import com.ratattack.game.model.Field;
 import com.ratattack.game.model.GameWorld;
 import com.ratattack.game.model.system.BoundsSystem;
-import com.ratattack.game.model.state.MenuState;
-import com.ratattack.game.model.state.StateManager;
+import com.ratattack.game.view.state.MenuState;
+import com.ratattack.game.view.state.StateManager;
 import com.ratattack.game.model.system.CollisionSystem;
 import com.ratattack.game.model.system.MovementSystem;
 import com.ratattack.game.model.system.RenderSystem;
 import com.ratattack.game.model.system.SpawnSystem;
 import com.ratattack.game.model.system.UserSystem;
-import com.ratattack.game.screens.OptionScreen;
-import com.ratattack.game.screens.ScreenFactory;
-import com.ratattack.game.screens.TutorialScreen;
+import com.ratattack.game.view.screens.OptionScreen;
+import com.ratattack.game.view.screens.ScreenFactory;
+import com.ratattack.game.view.screens.TutorialScreen;
 
 public class GameController {
 
@@ -52,7 +52,6 @@ public class GameController {
     }
 
     public void setStartScreen() {
-
         stateManager = new StateManager();
         stateManager.push(new MenuState(stateManager));
     }
@@ -97,11 +96,11 @@ public class GameController {
 
     public void addSystems(PooledEngine engine) {
         engine.addSystem(new UserSystem());
-        engine.addSystem(new RenderSystem(batch, shapeRenderer));
         engine.addSystem(new MovementSystem());
         engine.addSystem(new SpawnSystem(engine, GameSettings.ratSpawnrate, GameSettings.grandChildSpawnrate));
-        engine.addSystem(new CollisionSystem());
+        //engine.addSystem(new CollisionSystem());
         engine.addSystem(new BoundsSystem());
+        engine.addSystem(new RenderSystem(batch, shapeRenderer));
     }
 
     public void addEntities() {

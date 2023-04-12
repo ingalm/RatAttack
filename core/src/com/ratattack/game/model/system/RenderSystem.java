@@ -39,6 +39,7 @@ public class RenderSystem extends IteratingSystem {
     @Override
     public void update(float deltaTime) {
         super.update(deltaTime);
+        //System.out.println(getEngine().getEntitiesFor(renderFamily));
     }
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
