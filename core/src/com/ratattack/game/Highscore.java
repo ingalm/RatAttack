@@ -19,8 +19,20 @@ public class Highscore {
         fetchHighscores();
     }
 
+    private int getNumberOfElements(ArrayList<Score> highscores) {
+        int number;
+        if (highscores.size()<10) {
+            number = highscores.size();
+        }
+        else {
+           number = 10;
+        }
+        return number;
+    }
+
     public void render(SpriteBatch batch) {
-        for (int i = 0; i < highscores.size(); i++) {
+
+        for (int i = 0; i < getNumberOfElements(highscores)  ; i++) {
             int xPos = Gdx.graphics.getWidth() / 2 - 30;
             int yPos = Gdx.graphics.getHeight() - 100 - (i * 50);
             String text = (i + 1) + ". " + highscores.get(i).toString();
