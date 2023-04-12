@@ -37,5 +37,6 @@ public class Field {
             batch.draw(lane, i, 0, (float) width/GameSettings.laneNr, height);
         }
         batch.end();
+
     }
 }
