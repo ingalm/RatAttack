@@ -38,5 +38,6 @@ public class Field {
             batch.draw(lane, i, 0, width/laneNr, height);
         }
         batch.end();
+
     }
 }
