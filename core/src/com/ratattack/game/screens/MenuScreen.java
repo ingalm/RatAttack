@@ -28,7 +28,7 @@ public class MenuScreen implements Screen {
     SpriteBatch batch = GameController.getInstance().getBatch();
 
 
-    Texture greenbackground = new Texture("greenbackground.png");
+    Texture background = new Texture("greenbackground.png");
 
 
 
@@ -52,7 +52,7 @@ public class MenuScreen implements Screen {
         Gdx.input.setInputProcessor(stage);
 
 
-        final Image title = new Image(new Texture("menulabel.png"));
+        final Image title = new Image(new Texture("ratattacklogo.png"));
         title.setSize(Gdx.graphics.getWidth()/3f,  Gdx.graphics.getHeight()/2f);
         title.setPosition(Gdx.graphics.getWidth()/2f - title.getWidth()/2f, Gdx.graphics.getHeight()/2f);
 
@@ -84,8 +84,7 @@ public class MenuScreen implements Screen {
 
 
         batch.begin();
-        batch.draw(greenbackground, 0, 0, width, height);
-        //font.draw(batch, "MENU SCREEN", 200, 200);
+        batch.draw(background, 0, 0, width, height);
         batch.end();
 
         stage.draw();
@@ -99,8 +98,8 @@ public class MenuScreen implements Screen {
         b.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent inputEvent, float xpos, float ypos) {
-                //bytter screen vha state manager
-                gameController.stateManager.changeScreen(nextScreen);
+                //screencontext bytter screen vha state
+                gameController.screenContext.changeScreen(nextScreen);
             }
         });
         return b;
@@ -130,7 +129,6 @@ public class MenuScreen implements Screen {
 
     @Override
     public void dispose() {
-        font.dispose();
         stage.dispose();
         batch.dispose();
 

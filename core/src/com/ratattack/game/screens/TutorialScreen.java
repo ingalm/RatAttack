@@ -80,7 +80,7 @@ GameController gameController = GameController.getInstance();
             @Override
             public void clicked(InputEvent inputEvent, float xpos, float ypos) {
 
-                gameController.stateManager.changeScreen(nextScreen);
+                gameController.screenContext.changeScreen(nextScreen);
             }
         });
         return b;
