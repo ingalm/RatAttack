@@ -11,7 +11,7 @@ public class ScreenFactory {
     public static Screen getScreen(String screenType) {
         switch (screenType) {
             case "MENU":
-                return new MenuScreen();
+                return new MenuScreen(_FBIC);
             case "GAME":
                 return new GameScreen();
             case "TUTORIAL":

@@ -12,7 +12,7 @@ public interface FirebaseInterface {
 
     public void setOnValueChangedListener(DataHolderClass dataholder);
 
-    public void getHighscores(ArrayList<Score> dataHolder);
+    public void getHighscores(ArrayList<Score> dataHolder, DataHolderClass dataholder);
 
     public void setValueInDb(String target, String value);
 

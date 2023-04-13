@@ -13,10 +13,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.ratattack.game.FirebaseInterface;
+import com.ratattack.game.Highscore;
 import com.ratattack.game.gamecontroller.GameController;
 
 public class MenuScreen implements Screen {
-
+    Highscore highscore;
+    FirebaseInterface _FBIC;
 
     /***
      * TODO: LEGG TIL KOMMENTARER
@@ -39,7 +42,8 @@ public class MenuScreen implements Screen {
 
     private Stage stage;
 
-    public MenuScreen() {
+    public MenuScreen(FirebaseInterface FBIC) {
+        _FBIC = FBIC;
 
     }
 
@@ -62,6 +66,8 @@ public class MenuScreen implements Screen {
         stage.addActor(goToTutorialScreenB);
         stage.addActor(goToHighscoreScreenB);
 
+        highscore = new Highscore(_FBIC);
+        highscore.submitHighscore("Heihå", 670);
 
     }
 
@@ -75,7 +81,6 @@ public class MenuScreen implements Screen {
         batch.draw(background, 0, 0, width, height);
         font.draw(batch, "MENU SCREEN", 200, 200);
         batch.end();
-
         stage.draw();
 
     }

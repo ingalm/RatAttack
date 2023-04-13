@@ -71,17 +71,22 @@ public class AndroidInterfaceClass implements FirebaseInterface {
     }
 
     @Override
-    public void getHighscores(ArrayList<Score> dataHolder) {
+    public void getHighscores(ArrayList<Score> dataHolder, DataHolderClass dataholder) {
         System.out.println("Getting highcores");
         highscores.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
+                String key = "";
                 System.out.println("Got highcores");
                 Iterable<DataSnapshot> response = task.getResult().getChildren();
                 for (DataSnapshot child : response) {
                     dataHolder.add(child.getValue(Score.class));
+                    //key = highscores.child(child.toString()).getKey();
+                    key = child.getKey();
+                    dataHolder.someValue = key;
                 }
                 Collections.sort(dataHolder);
+                System.out.println("KEY ER: " + key);
             }
         });
     }

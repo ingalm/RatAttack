@@ -11,6 +11,8 @@ public class Highscore {
     private BitmapFont font;
     FirebaseInterface _FBIC;
 
+    DataHolderClass dataholder;
+
 
     public Highscore(FirebaseInterface _FBIC) {
         this._FBIC = _FBIC;
@@ -44,7 +46,7 @@ public class Highscore {
 
     private void fetchHighscores() {
         this.highscores.clear();
-        _FBIC.getHighscores(this.highscores);
+        _FBIC.getHighscores(this.highscores, dataholder);
     }
 
     public void submitHighscore(String name, int score) {
