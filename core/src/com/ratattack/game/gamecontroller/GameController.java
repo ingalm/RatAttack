@@ -3,31 +3,35 @@ package com.ratattack.game.gamecontroller;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.ratattack.game.GameSettings;
 import com.ratattack.game.RatAttack;
-import com.ratattack.game.model.Field;
+import com.ratattack.game.view.Field;
 import com.ratattack.game.model.GameWorld;
-import com.ratattack.game.screens.state.MenuState;
-import com.ratattack.game.screens.state.ScreenContext;
+import com.ratattack.game.view.state.MenuState;
+import com.ratattack.game.view.state.ScreenContext;
 import com.ratattack.game.model.system.CollisionSystem;
+import com.ratattack.game.model.system.BoundsSystem;
 import com.ratattack.game.model.system.MovementSystem;
 import com.ratattack.game.model.system.RenderSystem;
 import com.ratattack.game.model.system.SpawnSystem;
 import com.ratattack.game.model.system.UserSystem;
-import com.ratattack.game.screens.OptionScreen;
-import com.ratattack.game.screens.ScreenFactory;
-import com.ratattack.game.screens.TutorialScreen;
+import com.ratattack.game.view.screens.OptionScreen;
+import com.ratattack.game.view.screens.ScreenFactory;
+import com.ratattack.game.view.screens.TutorialScreen;
 
 public class GameController {
 
-    //Settings
-    private final long ratSpawnrate = 2000;
-    private final long grandChildSpawnrate = 2000;
-
     private static final GameController instance = new GameController();
+
     public Field field;
     private Boolean paused = true;
 
+    Stage stage;
     SpriteBatch batch;
+    ShapeRenderer shapeRenderer;
 
     // Ashley
     private RatAttack game;
@@ -38,7 +42,11 @@ public class GameController {
     public ScreenContext screenContext;
 
     private GameController() {
+        stage = new Stage(new ScreenViewport());
+        Gdx.input.setInputProcessor(stage);
+
         batch = new SpriteBatch();
+        shapeRenderer = new ShapeRenderer();
         setUpAshley();
     }
 
@@ -89,6 +97,9 @@ public class GameController {
         //Add systems to engine
         addSystems(engine);
 
+        //Add listeners
+        engine.addEntityListener(new GameEntityListener(engine));
+
         //Add entities
         addEntities();
 
@@ -96,10 +107,11 @@ public class GameController {
 
     public void addSystems(PooledEngine engine) {
         engine.addSystem(new UserSystem());
-        engine.addSystem(new RenderSystem(batch));
         engine.addSystem(new MovementSystem());
-        engine.addSystem(new SpawnSystem(engine, ratSpawnrate, grandChildSpawnrate));
-        engine.addSystem(new CollisionSystem(engine));
+        engine.addSystem(new SpawnSystem(engine, GameSettings.ratSpawnrate, GameSettings.grandChildSpawnrate));
+        //engine.addSystem(new CollisionSystem());
+        engine.addSystem(new BoundsSystem());
+        engine.addSystem(new RenderSystem(batch, shapeRenderer));
     }
 
     public void addEntities() {
@@ -112,6 +124,7 @@ public class GameController {
         if (!paused) {
             engine.update(Gdx.graphics.getDeltaTime());
         }
+        stage.draw();
     }
 
     public void setUpGame() {
@@ -141,6 +154,11 @@ public class GameController {
 
     public SpriteBatch getBatch() {
         return batch;
+    }
+    public Stage getStage() { return stage; }
+
+    public ShapeRenderer getShapeRenderer() {
+        return shapeRenderer;
     }
 
     public void setGame(RatAttack game) {

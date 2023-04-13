@@ -1,5 +1,7 @@
-package com.ratattack.game.screens;
+package com.ratattack.game.view.screens;
 
+import com.badlogic.ashley.core.PooledEngine;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
@@ -11,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.ratattack.game.gamecontroller.GameController;
+import java.util.ArrayList;
 
 public class GameScreen implements Screen {
 
@@ -19,10 +22,11 @@ public class GameScreen implements Screen {
      * */
 
 
-    private GameController gameController = GameController.getInstance();
+    private final GameController gameController = GameController.getInstance();
     Texture goToMenuTexture = new Texture("gotomenubutton.png");
     Texture goToTutorialTexture = new Texture("watchtutorialbutton.png");
-    private Stage stage;
+    private final Stage stage = gameController.getStage();
+
     public GameScreen() {
         gameController.setUpGame();
         resume(); // Prøv å slette denne når det funker, kan være den spiller av fra start
@@ -45,16 +49,13 @@ public class GameScreen implements Screen {
 
     @Override
     public void show() {
-        stage = new Stage(new ScreenViewport());
-        Gdx.input.setInputProcessor(stage);
-
         Button goToMenuScreenB = makeButton(goToMenuTexture,2f,"MENU");
         Button goToTutorialScreenB = makeButton(goToTutorialTexture,5f,"TUTORIAL");
 
         stage.addActor(goToMenuScreenB);
         stage.addActor(goToTutorialScreenB);
-
     }
+
     @Override
     public void render(float delta) {
 
@@ -93,9 +94,6 @@ public class GameScreen implements Screen {
     @Override
     public void dispose() {
         stage.dispose();
-
-
-
     }
 
 }
