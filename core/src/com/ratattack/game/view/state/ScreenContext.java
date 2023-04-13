@@ -1,30 +1,28 @@
 package com.ratattack.game.view.state;
 
-import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Screen;
 import com.ratattack.game.gamecontroller.GameController;
 
 import java.util.Stack;
 
-public class StateManager {
+public class ScreenContext {
 
 
     /***
      * TODO: LEGG TIL KOMMENTARER
      * */
 
-    public Stack<IState> states;
+    public Stack<State> states;
     public GameController gameController = GameController.getInstance();
 
     /***
      * This class manages all of the states and keeps track of current state in the stack.
      * state top of the stack gets rendered.
      */
-    public StateManager() {
+    public ScreenContext() {
         states  = new Stack<>();
     }
 
-    public void push(IState state){
+    public void push(State state){
         states.push(state);
     }
 
@@ -32,14 +30,16 @@ public class StateManager {
         states.pop();
     }
 
-    void changeState(IState state){
+    void changeState(State state){
         pop();
         states.push(state);
     }
 
     public void changeScreen(String type){
-        GameController.getInstance().getStage().clear();
+        gameController.getStage().clear();
+        gameController.getEngine().removeAllEntities();
         states.peek().changeScreen(type);
+
     }
 
 }

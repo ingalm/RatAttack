@@ -10,6 +10,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
@@ -23,13 +25,18 @@ public class MenuScreen implements Screen {
 
     GameController gameController = GameController.getInstance();
 
-
     private BitmapFont font;
     SpriteBatch batch = GameController.getInstance().getBatch();
 
-    Texture background = new Texture("bluebackground.png");
-    Texture pinkButton = new Texture("pinkbutton.png");
-    Texture purpleButton = new Texture("purplebutton.png");
+
+    Texture background = new Texture("greenbackground.png");
+
+
+
+
+    Texture playGameTexture = new Texture("playgamebutton.png");
+    Texture watchTutorialTexture = new Texture("watchtutorialbutton.png");
+    Texture highscoreTexture = new Texture("highscorebutton.png");
     int width = Gdx.graphics.getWidth();
     int height = Gdx.graphics.getHeight();
 
@@ -41,16 +48,24 @@ public class MenuScreen implements Screen {
 
     @Override
     public void show() {
-        Button goToGameScreenB = makeButton(pinkButton,2f,"GAME");
-        Button goToTutorialScreenB = makeButton(purpleButton,5f,"TUTORIAL");
 
 
-        font = new BitmapFont();
-        font.setColor(Color.RED);
-        font.getData().setScale(10);
+        final Image title = new Image(new Texture("ratattacklogo.png"));
+        title.setSize(Gdx.graphics.getWidth()/3f,  Gdx.graphics.getHeight()/2f);
+        title.setPosition(Gdx.graphics.getWidth()/2f - title.getWidth()/2f, Gdx.graphics.getHeight()/2f);
 
-        stage.addActor(goToGameScreenB);
-        stage.addActor(goToTutorialScreenB);
+        Button highscoreButton = makeButton(highscoreTexture,5f,"TUTORIAL"); //TODO: endre til HIGHSCORE SCREEN
+        Button playGameButton = makeButton(playGameTexture,2f,"GAME");
+        Button watchTutorialButton = makeButton(watchTutorialTexture,1.25f,"TUTORIAL");
+
+
+
+
+        stage.addActor(title);
+        stage.addActor(highscoreButton);
+        stage.addActor(playGameButton);
+        stage.addActor(watchTutorialButton);
+
 
     }
 
@@ -61,20 +76,19 @@ public class MenuScreen implements Screen {
 
         batch.begin();
         batch.draw(background, 0, 0, width, height);
-        font.draw(batch, "MENU SCREEN", 200, 200);
         batch.end();
 
     }
 
     private Button makeButton(Texture texture, float xPos, final String nextScreen){
         Button b = new Button(new TextureRegionDrawable(new TextureRegion(texture)));
-        b.setSize(Gdx.graphics.getWidth()/10f  ,   Gdx.graphics.getHeight()/7f);
+        b.setSize(Gdx.graphics.getWidth()/4f  ,   Gdx.graphics.getHeight()/2f);
         b.setPosition(Gdx.graphics.getWidth() / xPos - b.getWidth()/2f,Gdx.graphics.getHeight() / 10f*3f - b.getHeight() / 2f);
         b.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent inputEvent, float xpos, float ypos) {
-                //bytter screen vha state manager
-                gameController.stateManager.changeScreen(nextScreen);
+                //screencontext bytter screen vha state
+                gameController.screenContext.changeScreen(nextScreen);
             }
         });
         return b;
@@ -104,7 +118,6 @@ public class MenuScreen implements Screen {
 
     @Override
     public void dispose() {
-        font.dispose();
         batch.dispose();
     }
 }

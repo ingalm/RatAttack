@@ -1,8 +1,7 @@
 package com.ratattack.game.view.state;
 
-import com.badlogic.gdx.Screen;
 
-public interface IState {
+public interface State {
 
     /***
      * TODO: LEGG TIL KOMMENTARER
@@ -12,7 +11,7 @@ public interface IState {
      * Sends a call to the game state manager to change state
      * @param state: The state to change to.
      */
-    void changeState(IState state);
+    void changeState(State state);
 
     /***
      * Checks whether the state should change based on the screen type sent in.
@@ -30,4 +29,13 @@ public interface IState {
     void changeScreen(String type);
 
     void renderScreen();
+
+
+
+
+
+
+
+
+
 }

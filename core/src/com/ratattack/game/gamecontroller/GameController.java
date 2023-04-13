@@ -10,9 +10,10 @@ import com.ratattack.game.GameSettings;
 import com.ratattack.game.RatAttack;
 import com.ratattack.game.view.Field;
 import com.ratattack.game.model.GameWorld;
-import com.ratattack.game.model.system.BoundsSystem;
 import com.ratattack.game.view.state.MenuState;
-import com.ratattack.game.view.state.StateManager;
+import com.ratattack.game.view.state.ScreenContext;
+import com.ratattack.game.model.system.CollisionSystem;
+import com.ratattack.game.model.system.BoundsSystem;
 import com.ratattack.game.model.system.MovementSystem;
 import com.ratattack.game.model.system.RenderSystem;
 import com.ratattack.game.model.system.SpawnSystem;
@@ -38,7 +39,7 @@ public class GameController {
     private static GameWorld ashleyWorld;
     private static PooledEngine engine;
 
-    public StateManager stateManager;
+    public ScreenContext screenContext;
 
     private GameController() {
         stage = new Stage(new ScreenViewport());
@@ -58,8 +59,9 @@ public class GameController {
     }
 
     public void setStartScreen() {
-        stateManager = new StateManager();
-        stateManager.push(new MenuState(stateManager));
+
+        screenContext = new ScreenContext();
+        screenContext.push(new MenuState(screenContext));
     }
 
     private void setGameScreen() {
@@ -100,6 +102,7 @@ public class GameController {
 
         //Add entities
         addEntities();
+
     }
 
     public void addSystems(PooledEngine engine) {

@@ -3,16 +3,16 @@ package com.ratattack.game.view.state;
 import com.badlogic.gdx.Screen;
 import com.ratattack.game.view.screens.ScreenFactory;
 
-public class GameState implements IState {
+public class GameState implements State {
 
 
     /***
      * TODO: LEGG TIL KOMMENTARER
      * */
-    private final StateManager stateManager;
+    private ScreenContext stateManager;
     private Screen currentScreen;
 
-    public GameState(StateManager sm) {
+    public GameState(ScreenContext sm) {
         this.stateManager = sm;
         currentScreen = ScreenFactory.getScreen("GAME");
 
@@ -20,12 +20,13 @@ public class GameState implements IState {
     }
 
     @Override
-    public void changeState(IState state) {
+    public void changeState(State state) {
         stateManager.changeState(state);
     }
 
     @Override
     public boolean shouldChangeState(String type) {
+
         return type.equalsIgnoreCase("MENU") ||  type.equalsIgnoreCase("TUTORIAL") ;
     }
 
@@ -33,7 +34,7 @@ public class GameState implements IState {
     public void changeScreen(String type) {
 
         if(shouldChangeState(type)){
-            IState state = type.equalsIgnoreCase("MENU") ? new MenuState(stateManager): new TutorialState(stateManager);
+            State state = type.equalsIgnoreCase("MENU") ? new MenuState(stateManager): new TutorialState(stateManager);
             changeState(state);
         } else {
             currentScreen = ScreenFactory.getScreen(type);
@@ -44,8 +45,12 @@ public class GameState implements IState {
 
     @Override
     public void renderScreen() {
+
         stateManager.gameController.getGame().setScreen(currentScreen);
+
     }
+
+
 
 
 }
