@@ -1,6 +1,9 @@
 package com.ratattack.game.view.state;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Screen;
+import com.ratattack.game.gamecontroller.GameController;
+import com.ratattack.game.model.system.SpawnSystem;
 import com.ratattack.game.view.screens.ScreenFactory;
 
 public class MenuState implements State {
@@ -9,7 +12,7 @@ public class MenuState implements State {
      * TODO: LEGG TIL KOMMENTARER
      * */
 
-    private ScreenContext stateManager;
+    private final ScreenContext stateManager;
     private Screen currentScreen;
 
     public MenuState(ScreenContext stateManager) {
@@ -48,8 +51,8 @@ public class MenuState implements State {
 
     @Override
     public void renderScreen() {
-
-        stateManager.gameController.getGame().setScreen(currentScreen);
+        GameController.getInstance().getEngine().getSystem(SpawnSystem.class).setProcessing(false);
+        GameController.getInstance().getGame().setScreen(currentScreen);
 
 
     }
