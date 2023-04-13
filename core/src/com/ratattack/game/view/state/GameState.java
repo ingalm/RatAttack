@@ -46,4 +46,6 @@ public class GameState implements IState {
     public void renderScreen() {
         stateManager.gameController.getGame().setScreen(currentScreen);
     }
+
+
 }

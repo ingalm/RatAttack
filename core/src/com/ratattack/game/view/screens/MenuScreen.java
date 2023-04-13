@@ -33,18 +33,14 @@ public class MenuScreen implements Screen {
     int width = Gdx.graphics.getWidth();
     int height = Gdx.graphics.getHeight();
 
-    private Stage stage;
+    private final Stage stage = gameController.getStage();
 
     public MenuScreen() {
-
+        System.out.println(stage);
     }
 
     @Override
     public void show() {
-
-        stage = new Stage(new ScreenViewport());
-        Gdx.input.setInputProcessor(stage);
-
         Button goToGameScreenB = makeButton(pinkButton,2f,"GAME");
         Button goToTutorialScreenB = makeButton(purpleButton,5f,"TUTORIAL");
 
@@ -56,7 +52,6 @@ public class MenuScreen implements Screen {
         stage.addActor(goToGameScreenB);
         stage.addActor(goToTutorialScreenB);
 
-
     }
 
 
@@ -64,13 +59,10 @@ public class MenuScreen implements Screen {
     @Override
     public void render(float delta) {
 
-
         batch.begin();
         batch.draw(background, 0, 0, width, height);
         font.draw(batch, "MENU SCREEN", 200, 200);
         batch.end();
-
-        stage.draw();
 
     }
 
@@ -113,8 +105,6 @@ public class MenuScreen implements Screen {
     @Override
     public void dispose() {
         font.dispose();
-        stage.dispose();
         batch.dispose();
-
     }
 }

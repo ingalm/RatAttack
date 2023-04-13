@@ -29,7 +29,6 @@ public class CollisionSystem extends IteratingSystem {
     protected void processEntity(Entity entity, float deltaTime) {
         if (entity.isScheduledForRemoval()) return;
 
-        PositionComponent position = positionMapper.get(entity);
         BoundsComponent bounds = rectangleBoundsMapper.get(entity); //Skal byttes til circlebounds når vi bare ser på bullets
 
         ImmutableArray<Entity> entities = getEngine().getEntitiesFor(hittableEntitiesFamily);
@@ -56,38 +55,5 @@ public class CollisionSystem extends IteratingSystem {
                 }*/
             }
         }
-
-        /*// Check for collisions with other entities
-        for (Entity otherEntity : getEntities()) {
-            if (otherEntity == entity) {
-                continue;    // skip self
-            }
-            CollisionComponent otherCollision = ComponentMappers.cm.get(otherEntity);
-            PositionComponent otherPosition = ComponentMappers.positionMapper.get(entity);
-
-            if (position.x < otherPosition.x + otherCollision.width &&
-                    position.x + collision.width > otherPosition.x &&
-                    position.y < otherPosition.y + otherCollision.height &&
-                    position.y + collision.height > otherPosition.y) {
-                // Collision detected, handle accordingly
-                System.out.println("baaam!");
-
-                // Create a ComponentMapper for the component you're interested in
-                ComponentMapper<CollisionComponent> collisionMapper = ComponentMapper.getFor(CollisionComponent.class);
-
-                // Iterate over all entities with the CollisionComponent
-                for (Entity checkEntity : engine.getEntitiesFor(Family.all(CollisionComponent.class).get())) {
-                    // Check if the entity has the desired properties
-                    PositionComponent positionComponent = ComponentMappers.positionMapper.get(checkEntity);
-                    if (positionComponent.x == entity.getComponent(PositionComponent.class).x
-                            && positionComponent.y == entity.getComponent(PositionComponent.class).y) {
-                        // Do something with the entity
-                        engine.removeEntity(entity);
-
-                        System.out.println("Found entity with CollisionComponent at (100, 200)");
-                    }
-                }
-            }
-        }*/
     }
 }

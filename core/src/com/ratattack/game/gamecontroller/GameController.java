@@ -2,8 +2,11 @@ package com.ratattack.game.gamecontroller;
 
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.ratattack.game.GameSettings;
 import com.ratattack.game.RatAttack;
 import com.ratattack.game.model.Field;
@@ -11,7 +14,6 @@ import com.ratattack.game.model.GameWorld;
 import com.ratattack.game.model.system.BoundsSystem;
 import com.ratattack.game.view.state.MenuState;
 import com.ratattack.game.view.state.StateManager;
-import com.ratattack.game.model.system.CollisionSystem;
 import com.ratattack.game.model.system.MovementSystem;
 import com.ratattack.game.model.system.RenderSystem;
 import com.ratattack.game.model.system.SpawnSystem;
@@ -23,9 +25,11 @@ import com.ratattack.game.view.screens.TutorialScreen;
 public class GameController {
 
     private static final GameController instance = new GameController();
+
     public Field field;
     private Boolean paused = true;
 
+    Stage stage;
     SpriteBatch batch;
     ShapeRenderer shapeRenderer;
 
@@ -38,6 +42,9 @@ public class GameController {
     public StateManager stateManager;
 
     private GameController() {
+        stage = new Stage(new ScreenViewport());
+        Gdx.input.setInputProcessor(stage);
+
         batch = new SpriteBatch();
         shapeRenderer = new ShapeRenderer();
         setUpAshley();
@@ -89,9 +96,11 @@ public class GameController {
         //Add systems to engine
         addSystems(engine);
 
+        //Add listeners
+        engine.addEntityListener(new GameEntityListener(engine));
+
         //Add entities
         addEntities();
-
     }
 
     public void addSystems(PooledEngine engine) {
@@ -113,6 +122,7 @@ public class GameController {
         if (!paused) {
             engine.update(Gdx.graphics.getDeltaTime());
         }
+        stage.draw();
     }
 
     public void setUpGame() {
@@ -143,6 +153,7 @@ public class GameController {
     public SpriteBatch getBatch() {
         return batch;
     }
+    public Stage getStage() { return stage; }
 
     public ShapeRenderer getShapeRenderer() {
         return shapeRenderer;
