@@ -26,8 +26,8 @@ GameController gameController = GameController.getInstance();
     SpriteBatch batch = GameController.getInstance().getBatch();
 
     Texture background = new Texture("greenbackground.png");
-    Texture pinkButton = new Texture("pinkbutton.png");
-    Texture purpleButton = new Texture("purplebutton.png");
+    Texture gotoGameTexture = new Texture("playgamebutton.png");
+    Texture gotoMenuTexture = new Texture("gotomenubutton.png");
     int width = Gdx.graphics.getWidth();
     int height = Gdx.graphics.getHeight();
 
@@ -43,8 +43,8 @@ GameController gameController = GameController.getInstance();
         stage = new Stage(new ScreenViewport());
         Gdx.input.setInputProcessor(stage);
 
-        Button goToGameScreenB = makeButton(pinkButton,2f,"GAME");
-        Button goToMenuScreenB = makeButton(purpleButton,5f,"MENU");
+        Button goToGameScreenB = makeButton(gotoGameTexture,2f,"GAME");
+        Button goToMenuScreenB = makeButton(gotoMenuTexture,5f,"MENU");
 
 
         font = new BitmapFont();
