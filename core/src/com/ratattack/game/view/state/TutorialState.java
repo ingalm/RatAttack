@@ -1,7 +1,7 @@
-package com.ratattack.game.screens.state;
+package com.ratattack.game.view.state;
 
 import com.badlogic.gdx.Screen;
-import com.ratattack.game.screens.ScreenFactory;
+import com.ratattack.game.view.screens.ScreenFactory;
 
 public class TutorialState implements State {
 

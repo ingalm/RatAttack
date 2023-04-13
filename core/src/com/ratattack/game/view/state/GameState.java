@@ -1,48 +1,45 @@
-package com.ratattack.game.screens.state;
+package com.ratattack.game.view.state;
 
 import com.badlogic.gdx.Screen;
-import com.ratattack.game.screens.ScreenFactory;
+import com.ratattack.game.view.screens.ScreenFactory;
 
-public class MenuState implements State {
+public class GameState implements State {
+
 
     /***
      * TODO: LEGG TIL KOMMENTARER
      * */
-
     private ScreenContext stateManager;
     private Screen currentScreen;
 
-    public MenuState(ScreenContext stateManager) {
-        this.stateManager = stateManager;
-        currentScreen = ScreenFactory.getScreen("MENU");
+    public GameState(ScreenContext sm) {
+        this.stateManager = sm;
+        currentScreen = ScreenFactory.getScreen("GAME");
 
         renderScreen();
-
     }
 
     @Override
     public void changeState(State state) {
         stateManager.changeState(state);
-        System.out.println("the state is menu and is now changing");
     }
-
 
     @Override
     public boolean shouldChangeState(String type) {
 
-        return type.equalsIgnoreCase("GAME") ||  type.equalsIgnoreCase("TUTORIAL");
+        return type.equalsIgnoreCase("MENU") ||  type.equalsIgnoreCase("TUTORIAL") ;
     }
 
     @Override
     public void changeScreen(String type) {
+
         if(shouldChangeState(type)){
-            State state = type.equalsIgnoreCase("GAME") ? new GameState(stateManager): new TutorialState(stateManager);
+            State state = type.equalsIgnoreCase("MENU") ? new MenuState(stateManager): new TutorialState(stateManager);
             changeState(state);
         } else {
             currentScreen = ScreenFactory.getScreen(type);
             renderScreen();
         }
-        System.out.println("the screen is now changing to " + type);
 
     }
 
@@ -51,8 +48,9 @@ public class MenuState implements State {
 
         stateManager.gameController.getGame().setScreen(currentScreen);
 
-
     }
+
+
 
 
 }

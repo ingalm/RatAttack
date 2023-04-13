@@ -1,4 +1,4 @@
-package com.ratattack.game.screens.state;
+package com.ratattack.game.view.state;
 
 
 public interface State {

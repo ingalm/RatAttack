@@ -1,4 +1,4 @@
-package com.ratattack.game.screens.state;
+package com.ratattack.game.view.state;
 
 import com.ratattack.game.gamecontroller.GameController;
 
@@ -36,7 +36,10 @@ public class ScreenContext {
     }
 
     public void changeScreen(String type){
+        gameController.getStage().clear();
+        gameController.getEngine().removeAllEntities();
         states.peek().changeScreen(type);
+
     }
 
 }
