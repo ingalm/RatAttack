@@ -48,7 +48,6 @@ public class GameController {
 
         batch = new SpriteBatch();
         shapeRenderer = new ShapeRenderer();
-        setUpAshley();
     }
 
     public RatAttack getGame(){
@@ -91,7 +90,7 @@ public class GameController {
         game.setScreen(tutorialScreen);
     }
 
-    private void setUpAshley() {
+    public void setUpAshley() {
         engine = new PooledEngine();
         ashleyWorld = new GameWorld(engine);
 

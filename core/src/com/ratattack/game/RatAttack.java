@@ -15,6 +15,7 @@ public class RatAttack extends Game {
 	@Override
 	public void create () {
 		gameController = GameController.getInstance();
+		gameController.setUpAshley();
 		gameController.setGame(this);
 		gameController.setStartScreen();
 

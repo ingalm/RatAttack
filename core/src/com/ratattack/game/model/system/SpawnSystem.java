@@ -8,6 +8,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.utils.TimeUtils;
+import com.ratattack.game.GameSettings;
+import com.ratattack.game.gamecontroller.GameController;
 import com.ratattack.game.model.components.BalanceComponent;
 import com.ratattack.game.model.components.BoundsComponent;
 import com.ratattack.game.model.components.HealthComponent;
@@ -24,6 +26,8 @@ public class SpawnSystem extends IteratingSystem {
     private final long ratSpawnInterval;
     private final long grandChildSpawnInterval;
     private final PooledEngine engine;
+
+    private final GameController gameController = GameController.getInstance();
 
     public SpawnSystem(PooledEngine engine, long ratSpawnrate, long grandChildSpawnrate) {
         super(Family.all(SpriteComponent.class).get());
@@ -63,16 +67,20 @@ public class SpawnSystem extends IteratingSystem {
         Texture texture = new Texture("rat.png");
         rat.getComponent(SpriteComponent.class).sprite = new Sprite(texture);
 
-        //Position is not randomized yet, should be added
+        Random random = new Random();
+
         PositionComponent position = rat.getComponent(PositionComponent.class);
-        position.x = 50;
+        int min = 0;
+        int max = 3;
+        int randomNumber = random.nextInt(max - min + 1) + min;
+
+        position.x = gameController.field.laneDividers.get(randomNumber) + texture.getWidth();
         position.y = 1500;
 
         VelocityComponent velocity = rat.getComponent(VelocityComponent.class);
-        Random random = new Random();
-        int min = 1;
-        int max = 10;
-        int randomNumber = random.nextInt(max - min + 1) + min;
+        min = 1;
+        max = 10;
+        randomNumber = random.nextInt(max - min + 1) + min;
 
         velocity.x = 0;
         velocity.y = -randomNumber;
@@ -99,16 +107,20 @@ public class SpawnSystem extends IteratingSystem {
         Texture texture = new Texture("grandchild.png");
         grandChildEntity.getComponent(SpriteComponent.class).sprite = new Sprite(texture);
 
-        //Position is not randomized yet, should be added
+        Random random = new Random();
+
         PositionComponent position = grandChildEntity.getComponent(PositionComponent.class);
-        position.x = 400;
+        int min = 0;
+        int max = 3;
+        int randomNumber = random.nextInt(max - min + 1) + min;
+
+        position.x = gameController.field.laneDividers.get(randomNumber) + (texture.getWidth()*2)/3;
         position.y = 1500;
 
         VelocityComponent velocity = grandChildEntity.getComponent(VelocityComponent.class);
-        Random random = new Random();
-        int min = 1;
-        int max = 10;
-        int randomNumber = random.nextInt(max - min + 1) + min;
+        min = 1;
+        max = 10;
+        randomNumber = random.nextInt(max - min + 1) + min;
 
         velocity.x = 0;
         velocity.y = -randomNumber;
