@@ -20,8 +20,8 @@ public class GameScreen implements Screen {
 
 
     private GameController gameController = GameController.getInstance();
-    Texture pinkButton = new Texture("pinkbutton.png");
-    Texture purpleButton = new Texture("purplebutton.png");
+    Texture goToMenuTexture = new Texture("gotomenubutton.png");
+    Texture goToTutorialTexture = new Texture("watchtutorialbutton.png");
     private Stage stage;
     public GameScreen() {
         gameController.setUpGame();
@@ -48,8 +48,8 @@ public class GameScreen implements Screen {
         stage = new Stage(new ScreenViewport());
         Gdx.input.setInputProcessor(stage);
 
-        Button goToMenuScreenB = makeButton(pinkButton,2f,"MENU");
-        Button goToTutorialScreenB = makeButton(purpleButton,5f,"TUTORIAL");
+        Button goToMenuScreenB = makeButton(goToMenuTexture,2f,"MENU");
+        Button goToTutorialScreenB = makeButton(goToTutorialTexture,5f,"TUTORIAL");
 
         stage.addActor(goToMenuScreenB);
         stage.addActor(goToTutorialScreenB);
