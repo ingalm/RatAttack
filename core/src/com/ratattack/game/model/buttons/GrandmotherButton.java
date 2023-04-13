@@ -20,6 +20,7 @@ public class GrandmotherButton {
     Texture grandMotherTexture = new Texture("grandmother.png");
 
     int id;
+    int currentUpgrade = 0;
 
     public GrandmotherButton(int laneWidth, int i) {
         id = i;
@@ -45,7 +46,11 @@ public class GrandmotherButton {
     }
 
     public void upgrade() {
-        System.out.println("Upgrade" + id);
-        //Implementere at bestemødrene endrer strategi
+        //Må sjekke om balansen er høy nok for å betale for oppgraderinga
+        // Må inkludere prisen for oppgraderinga
+        if (currentUpgrade != ShootingStrategy.strategies.length - 1) {
+            currentUpgrade += 1;
+            strategy = ShootingStrategy.strategies[currentUpgrade];
+        }
     }
 }
