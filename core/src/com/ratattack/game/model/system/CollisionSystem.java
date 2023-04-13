@@ -50,6 +50,7 @@ public class CollisionSystem extends IteratingSystem {
                 //Håndtere misting av liv
 
                 getEngine().removeEntity(hittableEntity);
+                getEngine().removeEntity(entity);
 
             }
         }
