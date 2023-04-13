@@ -48,7 +48,7 @@ public class TutorialState implements IState {
 
     @Override
     public void renderScreen() {
-
         stateManager.gameController.getGame().setScreen(currentScreen);
     }
+
 }

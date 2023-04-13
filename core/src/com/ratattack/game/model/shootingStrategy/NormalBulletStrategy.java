@@ -4,6 +4,6 @@ public class NormalBulletStrategy implements ShootingStrategy{
 
     @Override
     public void shoot() {
-
+        System.out.println("Hahahahaha");
     }
 }

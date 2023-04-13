@@ -1,6 +1,7 @@
 package com.ratattack.game.view.screens;
 
 import com.badlogic.ashley.core.PooledEngine;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
@@ -26,7 +27,8 @@ public class GameScreen implements Screen {
     private final GameController gameController = GameController.getInstance();
     Texture pinkButton = new Texture("pinkbutton.png");
     Texture purpleButton = new Texture("purplebutton.png");
-    private Stage stage;
+    private final Stage stage = gameController.getStage();
+
     public GameScreen() {
         gameController.setUpGame();
         resume(); // Prøv å slette denne når det funker, kan være den spiller av fra start
@@ -50,24 +52,19 @@ public class GameScreen implements Screen {
 
     @Override
     public void show() {
-        stage = new Stage(new ScreenViewport());
-        Gdx.input.setInputProcessor(stage);
 
         Button goToMenuScreenB = makeButton(pinkButton,2f,"MENU");
         Button goToTutorialScreenB = makeButton(purpleButton,5f,"TUTORIAL");
 
         stage.addActor(goToMenuScreenB);
         stage.addActor(goToTutorialScreenB);
-
     }
 
 
     @Override
     public void render(float delta) {
-
        gameController.field.draw();
        stage.draw();
-
     }
 
 
@@ -101,4 +98,5 @@ public class GameScreen implements Screen {
     public void dispose() {
         stage.dispose();
     }
+
 }

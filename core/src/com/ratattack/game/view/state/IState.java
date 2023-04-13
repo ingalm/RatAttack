@@ -1,5 +1,7 @@
 package com.ratattack.game.view.state;
 
+import com.badlogic.gdx.Screen;
+
 public interface IState {
 
     /***
@@ -28,9 +30,4 @@ public interface IState {
     void changeScreen(String type);
 
     void renderScreen();
-
-
-
-
-
 }
