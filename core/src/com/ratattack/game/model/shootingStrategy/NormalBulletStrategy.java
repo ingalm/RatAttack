@@ -1,6 +1,7 @@
 package com.ratattack.game.model.shootingStrategy;
 
 
+import static com.ratattack.game.model.ComponentMappers.circleBoundsMapper;
 import static com.ratattack.game.model.ComponentMappers.positionMapper;
 import static com.ratattack.game.model.ComponentMappers.powerUpMapper;
 import static com.ratattack.game.model.ComponentMappers.spriteMapper;
@@ -31,6 +32,7 @@ public class NormalBulletStrategy implements ShootingStrategy{
         VelocityComponent velocity = velocityMapper.get(bullet);
         SpriteComponent sprite = spriteMapper.get(bullet);
         StrengthComponent strength = strengthMapper.get(bullet);
+        CircleBoundsComponent bounds = circleBoundsMapper.get(bullet);
         //PowerUpComponent powerUp = powerUpMapper.get(bullet);
 
         position.x = x;
@@ -43,5 +45,8 @@ public class NormalBulletStrategy implements ShootingStrategy{
         sprite.sprite.setSize(20, 20);
 
         strength.strength = 10;
+
+        bounds.setCenter(x, y);
+        bounds.setSize(bulletTexture.getWidth()/2, bulletTexture.getHeight()/2);
     }
 }
