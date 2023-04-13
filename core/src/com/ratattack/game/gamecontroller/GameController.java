@@ -2,14 +2,13 @@ package com.ratattack.game.gamecontroller;
 
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.ratattack.game.GameSettings;
 import com.ratattack.game.RatAttack;
-import com.ratattack.game.model.Field;
+import com.ratattack.game.view.Field;
 import com.ratattack.game.model.GameWorld;
 import com.ratattack.game.model.system.BoundsSystem;
 import com.ratattack.game.view.state.MenuState;

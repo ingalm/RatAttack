@@ -52,7 +52,6 @@ public class GameScreen implements Screen {
 
     @Override
     public void show() {
-
         Button goToMenuScreenB = makeButton(pinkButton,2f,"MENU");
         Button goToTutorialScreenB = makeButton(purpleButton,5f,"TUTORIAL");
 

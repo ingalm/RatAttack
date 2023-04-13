@@ -1,4 +1,4 @@
-package com.ratattack.game.model;
+package com.ratattack.game.view;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -16,7 +16,6 @@ public class Field {
 
     Texture lane = new Texture("lane.png");
     Texture backgroundBox; // For bakgrunnen til highScore og balanse
-    Texture grandMotherTexture = new Texture("grandmother.png");
 
     public ArrayList<Integer> laneDividers = new ArrayList<>();
     public ArrayList<GrandmotherButton> grandmaButtons = new ArrayList<>();
@@ -34,8 +33,7 @@ public class Field {
             GrandmotherButton grandmaBtn = new GrandmotherButton(laneWidth, i);
             grandmaButtons.add(grandmaBtn);
 
-            UpgradeButton upgradeBtn = new UpgradeButton(laneWidth, i);
-
+            new UpgradeButton(laneWidth, i);
 
             GameController.getInstance().getStage().addActor(grandmaBtn.getButton());
             }
@@ -49,7 +47,5 @@ public class Field {
             batch.draw(lane, i, 0, (float) width/GameSettings.laneNr, height);
         }
         batch.end();
-
     }
-
 }
