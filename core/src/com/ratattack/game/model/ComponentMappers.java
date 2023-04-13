@@ -8,6 +8,7 @@ import com.ratattack.game.model.components.PositionComponent;
 import com.ratattack.game.model.components.RectangleBoundsComponent;
 import com.ratattack.game.model.components.SpriteComponent;
 import com.ratattack.game.model.components.PowerUpComponent;
+import com.ratattack.game.model.components.StrengthComponent;
 import com.ratattack.game.model.components.UserComponent;
 import com.ratattack.game.model.components.VelocityComponent;
 
@@ -20,4 +21,6 @@ public abstract class ComponentMappers {
     public static final ComponentMapper<UserComponent> userMapper = ComponentMapper.getFor(UserComponent.class);
     public static final ComponentMapper<RectangleBoundsComponent> rectangleBoundsMapper = ComponentMapper.getFor(RectangleBoundsComponent.class);
     public static final ComponentMapper<CircleBoundsComponent> circleBoundsMapper = ComponentMapper.getFor(CircleBoundsComponent.class);
+    public static final ComponentMapper<StrengthComponent> strengthMapper = ComponentMapper.getFor(StrengthComponent.class);
+    public static final ComponentMapper<PowerUpComponent> powerUpMapper = ComponentMapper.getFor(PowerUpComponent.class);
 }

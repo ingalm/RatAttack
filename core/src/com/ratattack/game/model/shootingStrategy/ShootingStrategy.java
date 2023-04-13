@@ -6,5 +6,5 @@ public interface ShootingStrategy {
 
     ShootingStrategy[] strategies = {new NormalBulletStrategy(), new BigBulletStrategy(), new FastBulletStrategy(), new FreezeBulletStrategy(), new TripleBulletStrategy()};
 
-    void shoot();
+    void shoot(int x, int y);
 }
