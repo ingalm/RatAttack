@@ -3,6 +3,7 @@ package com.ratattack.game;
 public class DataHolderClass {
 
     String someValue;
+    Score lastScore;
 
     public DataHolderClass()
     {
