@@ -4,5 +4,5 @@ import com.badlogic.ashley.core.Component;
 
 public class StrengthComponent implements Component {
 
-    int strength;
+    public int strength;
 }
