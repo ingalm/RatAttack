@@ -33,7 +33,7 @@ public class DesktopInterfaceClass implements FirebaseInterface {
 
 
      @Override
-     public void addHighscore(Score score) {
+     public void addHighscore(Score score, DataHolderClass dataholder) {
 
      }
 

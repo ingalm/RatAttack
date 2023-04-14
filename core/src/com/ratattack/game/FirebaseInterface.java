@@ -16,6 +16,6 @@ public interface FirebaseInterface {
 
     public void setValueInDb(String target, String value);
 
-    public void addHighscore(Score score);
+    public void addHighscore(Score score, DataHolderClass dataholder);
 
 }

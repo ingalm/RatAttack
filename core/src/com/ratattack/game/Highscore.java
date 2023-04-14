@@ -52,7 +52,7 @@ public class Highscore {
     }
 
     public void submitHighscore(String name, int score) {
-        _FBIC.addHighscore(new Score(score, name));
+        _FBIC.addHighscore(new Score(score, name), dataholder);
     }
 
 }

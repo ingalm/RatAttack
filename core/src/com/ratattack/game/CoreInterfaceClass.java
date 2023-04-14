@@ -29,7 +29,7 @@ public class CoreInterfaceClass implements FirebaseInterface {
     }
 
     @Override
-    public void addHighscore(Score score) {
+    public void addHighscore(Score score, DataHolderClass dataholder) {
 
     }
 

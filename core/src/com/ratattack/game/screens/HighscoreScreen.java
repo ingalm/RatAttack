@@ -20,37 +20,38 @@ public class HighscoreScreen implements Screen {
     Texture background = new Texture("bluebackground.png");
     int width = Gdx.graphics.getWidth();
     int height = Gdx.graphics.getHeight();
-    DataHolderClass dataHolder;
+    DataHolderClass _dataHolderClass;
 
     private Stage stage;
     Highscore highscore;
 
     FirebaseInterface _FBIC;
 
-    public HighscoreScreen(FirebaseInterface FBIC) {
+    public HighscoreScreen(FirebaseInterface FBIC, DataHolderClass dataHolderClass) {
         _FBIC = FBIC;
+        _dataHolderClass = dataHolderClass;
     }
 
     @Override
     public void show() {
         stage = new Stage(new ScreenViewport());
         Gdx.input.setInputProcessor(stage);
-        dataHolder = new DataHolderClass();
         stage = new Stage(new ScreenViewport());
         batch2 = new SpriteBatch();
-        gameController = GameController.getInstance();
+        //gameController = GameController.getInstance();
+        //dataHolder = gameController.getDataHolderClass();
         highscore = new Highscore(_FBIC);
         new ScoreManager();
-        System.out.println("denne er fra MenuScreen" + dataHolder.getSomeValue());
-        dataHolder.PrintSomeValue();
-        highscore.submitHighscore("Rebecca", 780);
+        //highscore.submitHighscore("Rebecca", 780);
+        System.out.println("Denne er fra HighScoreScreen");
+        _dataHolderClass.PrintSomeValue();
     }
 
     @Override
     public void render(float delta) {
         batch2.begin();
         batch2.draw(background, 0, 0, width, height);
-        gameController.update();
+        //gameController.update();
         highscore.render(batch2);
         batch2.end();
         stage.draw();

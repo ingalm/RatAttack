@@ -36,24 +36,23 @@ public class RatAttack extends Game {
 	
 	@Override
 	public void create () {
-		dataHolder = new DataHolderClass();
 		gameController = GameController.getInstance();
-		gameController.setDataHolderClass(dataHolder);
 		gameController.setFirebaseInterface(_FBIC);
+		dataHolder = new DataHolderClass();
+		gameController.setDataHolderClass(dataHolder);
 		gameController.setGame(this);
 		gameController.setStartScreen();
 		batch = new SpriteBatch();
 		highscore = new Highscore(_FBIC);
-
 
 		//FIREBASE
 		_FBIC.someFunction();
 		_FBIC.firebaseTest();
 		//_FBIC.setOnValueChangedListener(dataHolder);
 		_FBIC.setValueInDb("melding2", "Ny verdi har blitt gitt nå");
-		//highscore.submitHighscore("Anette", 8000);
-		System.out.println("fra ratAttack ");
-		dataHolder.PrintSomeValue();
+		highscore.submitHighscore("VitaminReload", 9000);
+		//System.out.println("fra ratAttack ");
+		//dataHolder.PrintSomeValue();
 	}
 
 	@Override

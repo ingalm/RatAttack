@@ -19,7 +19,7 @@ import com.ratattack.game.Highscore;
 import com.ratattack.game.gamecontroller.GameController;
 
 public class MenuScreen implements Screen {
-    Highscore highscore;
+    //Highscore highscore;
     FirebaseInterface _FBIC;
     DataHolderClass _dataHolderClass;
 
@@ -69,9 +69,9 @@ public class MenuScreen implements Screen {
         stage.addActor(goToTutorialScreenB);
         stage.addActor(goToHighscoreScreenB);
 
-        highscore = new Highscore(_FBIC);
-        System.out.println("Fra MenuScreen: ");
-        _dataHolderClass.PrintSomeValue();
+        //highscore = new Highscore(_FBIC);
+        //System.out.println("Fra MenuScreen: ");
+        //_dataHolderClass.PrintSomeValue();
 
     }
 
