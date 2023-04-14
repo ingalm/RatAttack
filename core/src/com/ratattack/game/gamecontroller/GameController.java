@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.ratattack.game.GameSettings;
 import com.ratattack.game.RatAttack;
+import com.ratattack.game.model.Player;
 import com.ratattack.game.model.system.CollisionSystem;
 import com.ratattack.game.view.Field;
 import com.ratattack.game.model.GameWorld;
@@ -26,6 +27,8 @@ import com.ratattack.game.view.screens.TutorialScreen;
 public class GameController {
 
     private static final GameController instance = new GameController();
+
+    public Player player;
 
     public Field field;
     private Boolean paused = true;
@@ -48,6 +51,8 @@ public class GameController {
 
         batch = new SpriteBatch();
         shapeRenderer = new ShapeRenderer();
+
+        player = new Player("Spiller");
     }
 
     public RatAttack getGame(){
