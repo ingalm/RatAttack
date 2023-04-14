@@ -19,7 +19,7 @@ public class TutorialScreen implements Screen {/***
  * TODO: LEGG TIL KOMMENTARER
  * */
 
-GameController gameController = GameController.getInstance();
+    private final GameController gameController = GameController.getInstance();
 
 
     private BitmapFont font;
@@ -31,17 +31,15 @@ GameController gameController = GameController.getInstance();
     int width = Gdx.graphics.getWidth();
     int height = Gdx.graphics.getHeight();
 
-    private Stage stage;
+    private final Stage stage = gameController.getStage();
 
     public TutorialScreen() {
+        System.out.println(stage);
 
     }
 
     @Override
     public void show() {
-
-        stage = new Stage(new ScreenViewport());
-        Gdx.input.setInputProcessor(stage);
 
         Button goToGameScreenB = makeButton(gotoGameTexture,2f,"GAME");
         Button goToMenuScreenB = makeButton(gotoMenuTexture,5f,"MENU");
@@ -66,9 +64,8 @@ GameController gameController = GameController.getInstance();
         batch.begin();
         batch.draw(background, 0, 0, width, height);
         font.draw(batch, "TUTORIAL SCREEN", 400, 200);
-
         batch.end();
-        stage.draw();
+
 
     }
 
@@ -79,7 +76,7 @@ GameController gameController = GameController.getInstance();
         b.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent inputEvent, float xpos, float ypos) {
-
+                //screencontext bytter screen vha state
                 gameController.screenContext.changeScreen(nextScreen);
             }
         });
@@ -111,7 +108,6 @@ GameController gameController = GameController.getInstance();
     @Override
     public void dispose() {
         font.dispose();
-        stage.dispose();
         batch.dispose();
 
     }
