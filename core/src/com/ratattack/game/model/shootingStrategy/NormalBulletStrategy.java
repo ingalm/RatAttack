@@ -42,7 +42,6 @@ public class NormalBulletStrategy implements ShootingStrategy{
         velocity.y = 10;
 
         sprite.sprite = new Sprite(bulletTexture);
-        sprite.sprite.setSize(20, 20);
 
         strength.strength = 10;
 
