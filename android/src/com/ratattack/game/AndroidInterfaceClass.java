@@ -83,7 +83,6 @@ public class AndroidInterfaceClass implements FirebaseInterface {
                     dataHolder.add(child.getValue(Score.class));
                     //key = highscores.child(child.toString()).getKey();
                     key = child.getKey();
-                    dataHolder.someValue = key;
                 }
                 Collections.sort(dataHolder);
                 System.out.println("KEY ER: " + key);

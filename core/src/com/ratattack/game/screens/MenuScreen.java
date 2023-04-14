@@ -67,7 +67,7 @@ public class MenuScreen implements Screen {
         stage.addActor(goToHighscoreScreenB);
 
         highscore = new Highscore(_FBIC);
-        highscore.submitHighscore("Heihå", 670);
+        highscore.submitHighscore("Tiril", 980);
 
     }
 
