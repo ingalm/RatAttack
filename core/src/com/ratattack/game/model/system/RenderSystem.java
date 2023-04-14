@@ -15,6 +15,8 @@ import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Shape2D;
 import com.ratattack.game.GameSettings;
+import com.ratattack.game.gamecontroller.GameController;
+import com.ratattack.game.model.components.BalanceComponent;
 import com.ratattack.game.model.components.BoundsComponent;
 import com.ratattack.game.model.components.CircleBoundsComponent;
 import com.ratattack.game.model.components.PositionComponent;
@@ -28,6 +30,7 @@ public class RenderSystem extends IteratingSystem {
     private final ShapeRenderer renderer;
     int windowWidth = Gdx.graphics.getWidth();
     int windowHeight = Gdx.graphics.getHeight();
+    private final GameController gameController = GameController.getInstance();
 
 
     public RenderSystem(SpriteBatch batch, ShapeRenderer renderer) {
@@ -78,6 +81,14 @@ public class RenderSystem extends IteratingSystem {
         }
 
         if (isBoundsOutsideWindow) {
+            // Gets the BalanceComponent for grandchildren and updates the balance
+            // of the player when grandchild has crossed the whole field.
+            if(entity.getComponent(BalanceComponent.class) != null) {
+               int balance = entity.getComponent(BalanceComponent.class).getBalance();
+               int oldBalance = gameController.player.getBalance();
+               int newBalance = oldBalance + balance;
+               gameController.player.setBalance(newBalance);
+            }
             getEngine().removeEntity(entity);
         }
 

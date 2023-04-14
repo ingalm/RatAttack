@@ -9,4 +9,7 @@ public class BalanceComponent implements Component {
     public void setBalance(int x) {
         this.balance = x;
     }
+    public int getBalance() {
+        return balance;
+    }
 }
