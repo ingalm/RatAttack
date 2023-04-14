@@ -8,7 +8,6 @@ public class GameSettings {
     public static final int laneNr = 4;
     public static boolean debug = false; //OBS: ShapeRenderer fører til OutOfMemoryError når programmet har kjørt lenge
 
-
     //Setup for rendering on screen
     public static int grandmotherLine = 20;
 }

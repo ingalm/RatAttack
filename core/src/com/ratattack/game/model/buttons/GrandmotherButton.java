@@ -34,7 +34,7 @@ public class GrandmotherButton {
         button.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent inputEvent, float xpos, float ypos) {
-                strategy.shoot((int) button.getX(), (int) button.getY());
+                strategy.shoot((int) button.getX() + grandMotherTexture.getWidth()/3, (int) button.getY());
             }
         });
 
