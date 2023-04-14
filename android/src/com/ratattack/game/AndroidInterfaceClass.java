@@ -23,7 +23,6 @@ public class AndroidInterfaceClass implements FirebaseInterface {
     DatabaseReference myRef;
 
     DatabaseReference highscores;
-    DataHolderClass dataholder;
     String myKey;
 
     public AndroidInterfaceClass() {
@@ -74,7 +73,7 @@ public class AndroidInterfaceClass implements FirebaseInterface {
     }
 
     @Override
-    public void getHighscores(ArrayList<Score> dataHolder) {
+    public void getHighscores(ArrayList<Score> scorelist) {
         System.out.println("Getting highcores");
         highscores.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
@@ -83,11 +82,11 @@ public class AndroidInterfaceClass implements FirebaseInterface {
                 System.out.println("Got highcores");
                 Iterable<DataSnapshot> response = task.getResult().getChildren();
                 for (DataSnapshot child : response) {
-                    dataHolder.add(child.getValue(Score.class));
+                    scorelist.add(child.getValue(Score.class));
                     //sånn er det mulig å få tak i key:)
                     //key = child.getKey();
                 }
-                Collections.sort(dataHolder);
+                Collections.sort(scorelist);
             }
         });
     }
