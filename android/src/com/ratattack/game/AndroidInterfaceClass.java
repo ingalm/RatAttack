@@ -24,6 +24,7 @@ public class AndroidInterfaceClass implements FirebaseInterface {
 
     DatabaseReference highscores;
     DataHolderClass dataholder;
+    String myKey;
 
     public AndroidInterfaceClass() {
 
@@ -105,7 +106,9 @@ public class AndroidInterfaceClass implements FirebaseInterface {
 
     @Override
     public void addHighscore(Score score) {
+        myKey = database.getReference("highscores").push().getKey();
         highscores.push().setValue(score);
+        System.out.println("HER ER MYKEY: "+ myKey);
     }
 
 
