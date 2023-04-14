@@ -8,7 +8,7 @@ import com.ratattack.game.gamecontroller.GameController;
 import java.util.ArrayList;
 
 public class Highscore {
-    private ArrayList<Score> highscores = new ArrayList<>();
+    private ArrayList<Score> scoreList = new ArrayList<>();
     private BitmapFont font;
     FirebaseInterface _FBIC;
 
@@ -23,10 +23,10 @@ public class Highscore {
         fetchHighscores();
     }
 
-    private int getNumberOfElements(ArrayList<Score> highscores) {
+    private int getNumberOfElements(ArrayList<Score> scoreList) {
         int number;
-        if (highscores.size()<10) {
-            number = highscores.size();
+        if (scoreList.size()<10) {
+            number = scoreList.size();
         }
         else {
            number = 10;
@@ -38,17 +38,17 @@ public class Highscore {
         int xPosition = Gdx.graphics.getWidth() / 2 - 400;
         int yPosition = Gdx.graphics.getHeight() - 150;
         font.draw(batch, "HIGHSCORE LIST", xPosition, yPosition);
-        for (int i = 0; i < getNumberOfElements(highscores)  ; i++) {
+        for (int i = 0; i < getNumberOfElements(scoreList)  ; i++) {
             int xPos = Gdx.graphics.getWidth() / 2 - 350;
             int yPos = Gdx.graphics.getHeight() - 300 - (i * 100);
-            String text = (i + 1) + ". " + highscores.get(i).toString();
+            String text = (i + 1) + ". " + scoreList.get(i).toString();
             font.draw(batch, text, xPos, yPos);
         }
     }
 
     private void fetchHighscores() {
-        this.highscores.clear();
-        _FBIC.getHighscores(this.highscores);
+        this.scoreList.clear();
+        _FBIC.getHighscores(this.scoreList);
     }
 
     public void submitHighscore(String name, int score) {

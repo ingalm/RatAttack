@@ -17,7 +17,7 @@ import static android.content.ContentValues.TAG;
 import java.util.ArrayList;
 import java.util.Collections;
 
-// Her skal logikk for Firebase være!!
+// Her er logikk for Firebase
 public class AndroidInterfaceClass implements FirebaseInterface {
     FirebaseDatabase database;
 
