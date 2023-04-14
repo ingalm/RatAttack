@@ -2,6 +2,7 @@ package com.ratattack.game.gamecontroller;
 
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -28,7 +29,7 @@ public class GameController {
 
     private static final GameController instance = new GameController();
 
-    public Player player;
+    private Player player;
 
     public Field field;
     private Boolean paused = true;
@@ -170,4 +171,11 @@ public class GameController {
         this.game = game;
     }
 
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
 }

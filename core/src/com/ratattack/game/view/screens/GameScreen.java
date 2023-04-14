@@ -1,7 +1,5 @@
 package com.ratattack.game.view.screens;
 
-import com.badlogic.ashley.core.PooledEngine;
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
@@ -11,9 +9,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.ratattack.game.gamecontroller.GameController;
-import java.util.ArrayList;
+import com.ratattack.game.gamecontroller.UsernameTextInputListener;
 
 public class GameScreen implements Screen {
 
@@ -27,9 +24,13 @@ public class GameScreen implements Screen {
     Texture goToTutorialTexture = new Texture("watchtutorialbutton.png");
     private final Stage stage = gameController.getStage();
 
+
     public GameScreen() {
         gameController.setUpGame();
-        resume(); // Prøv å slette denne når det funker, kan være den spiller av fra start
+
+        UsernameTextInputListener listener = new UsernameTextInputListener();
+        Gdx.input.getTextInput(listener, "What is your name?", "", "Username");
+
     }
 
     private Button makeButton(Texture texture, float xPos, final String nextScreen){
@@ -93,7 +94,6 @@ public class GameScreen implements Screen {
 
     @Override
     public void dispose() {
-
         stage.dispose();
     }
 
