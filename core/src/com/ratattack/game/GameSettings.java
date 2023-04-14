@@ -10,4 +10,20 @@ public class GameSettings {
 
     //Setup for rendering on screen
     public static int grandmotherLine = 20;
+
+
+    //Health and strength constants
+    public static final int ratStartHealth = 20;
+    public static final int grandChildStartHealth = 50;
+
+    public static final int normalBulletStrength = 10;
+    public static final int tripleBulletStrength = 10;
+    public static final int bigBulletStrength = 20;
+    public static final int fastBulletStrength = 30;
+    public static final int freezeBulletStrength = 40;
+
+
+
+
+
 }
