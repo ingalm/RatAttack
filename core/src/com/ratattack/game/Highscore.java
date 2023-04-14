@@ -48,7 +48,7 @@ public class Highscore {
 
     private void fetchHighscores() {
         this.highscores.clear();
-        _FBIC.getHighscores(this.highscores, dataholder);
+        _FBIC.getHighscores(this.highscores);
     }
 
     public void submitHighscore(String name, int score) {
