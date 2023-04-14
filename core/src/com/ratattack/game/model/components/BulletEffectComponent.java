@@ -6,11 +6,8 @@ public class BulletEffectComponent implements Component {
     // her skal powerup funskjonalitet legges til idk
 
 
-    String effect;
+    String effect ="";
 
-    public BulletEffectComponent(String effect) {
-        this.effect = effect;
-    }
 
     public String getEffect() {
         return effect;

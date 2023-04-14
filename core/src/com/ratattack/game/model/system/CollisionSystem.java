@@ -13,6 +13,7 @@ import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.ashley.utils.ImmutableArray;
+import com.ratattack.game.GameSettings;
 import com.ratattack.game.model.components.BoundsComponent;
 import com.ratattack.game.model.components.BulletEffectComponent;
 import com.ratattack.game.model.components.CircleBoundsComponent;
@@ -53,19 +54,23 @@ public class CollisionSystem extends IteratingSystem {
 
             if (bounds.overlaps(otherBounds)) {
 
+                //bullet er entity, hittable er den rat/child
                 StrengthComponent hitStrength = strengthMapper.get(entity);
                 HealthComponent entityHealth = healthMapper.get(hittableEntity);
+                BulletEffectComponent bulletEffect = bulletEffectMapper.get(entity);
+
+                System.out.println(bulletEffect);
+                System.out.println(bulletEffect.getEffect());
 
                 entityHealth.setHealth((entityHealth.getHealth()-hitStrength.strength));
 
-                System.out.println("STRENGHT IS " + hitStrength.getStrength());
 
                 //Legg inn sjekk av om kula har en powerup, og apply effekten til entiteten
-                if (hitStrength.getStrength()==40) {
-                    System.out.println("ENTITY HIT BY FREEZEBULLET");
+
+                if (bulletEffect.getEffect().equals("FREEZE")) {
 
                     VelocityComponent velocity = velocityMapper.get(hittableEntity);
-                    velocity.y = 0;
+                    velocity.y = GameSettings.freezeVelocity;
                 }
 
 
