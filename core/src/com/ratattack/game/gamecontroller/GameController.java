@@ -40,7 +40,7 @@ public class GameController {
     public StateManager stateManager;
 
     FirebaseInterface _FBIC;
-    DataHolderClass _dataHolder;
+    DataHolderClass dataHolder;
 
     private GameController() {
         batch = new SpriteBatch();
@@ -161,10 +161,10 @@ public class GameController {
         this._FBIC = FBIC;
     }
     public void setDataHolderClass(DataHolderClass dataHolder) {
-        this._dataHolder = dataHolder;
+        this.dataHolder = dataHolder;
     }
 
     public DataHolderClass getDataHolderClass(){
-        return _dataHolder;
+        return dataHolder;
     }
 }

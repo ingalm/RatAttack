@@ -50,10 +50,10 @@ public class AndroidInterfaceClass implements FirebaseInterface {
     }
 
     @Override
-    public void addHighscore(Score score,  final DataHolderClass dataholder) {
+    public void addHighscore(Score score,  final DataHolderClass dataHolder) {
         myKey = database.getReference("highscores").push().getKey();
         highscores.push().setValue(score);
         System.out.println("HER ER MYKEY: "+ myKey);
-        dataholder.someValue = myKey;
+        dataHolder.someValue = myKey;
     }
 }

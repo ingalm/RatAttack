@@ -7,9 +7,9 @@ import java.util.ArrayList;
 public interface FirebaseInterface {
 
 
-    public void getHighscores(ArrayList<Score> dataHolder);
+    public void getHighscores(ArrayList<Score> scoreList);
 
 
-    public void addHighscore(Score score, DataHolderClass dataholder);
+    public void addHighscore(Score score, DataHolderClass dataHolder);
 
 }
