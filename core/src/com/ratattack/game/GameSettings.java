@@ -22,6 +22,9 @@ public class GameSettings {
     public static final int fastBulletStrength = 30;
     public static final int freezeBulletStrength = 40;
 
+    //Velocity constants
+    public static final int freezeVelocity = -2;
+
 
 
 

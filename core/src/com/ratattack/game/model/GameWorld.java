@@ -2,10 +2,10 @@ package com.ratattack.game.model;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
+import com.ratattack.game.model.components.BulletEffectComponent;
 import com.ratattack.game.model.components.CircleBoundsComponent;
 import com.ratattack.game.model.components.PositionComponent;
 import com.ratattack.game.model.components.SpriteComponent;
-import com.ratattack.game.model.components.PowerUpComponent;
 import com.ratattack.game.model.components.StrengthComponent;
 import com.ratattack.game.model.components.UserComponent;
 import com.ratattack.game.model.components.VelocityComponent;
@@ -33,6 +33,7 @@ public class GameWorld {
         bulletEntity.add(new SpriteComponent());
         bulletEntity.add(new StrengthComponent());
         bulletEntity.add(new CircleBoundsComponent());
+        bulletEntity.add(new BulletEffectComponent());
         engine.addEntity(bulletEntity);
         return bulletEntity;
     }
