@@ -26,7 +26,7 @@ public class MenuState implements State {
     @Override
     public void changeState(State state) {
         stateManager.changeState(state);
-        System.out.println("the state is menu and is now changing");
+
     }
 
 
@@ -45,7 +45,6 @@ public class MenuState implements State {
             currentScreen = ScreenFactory.getScreen(type);
             renderScreen();
         }
-        System.out.println("the screen is now changing to " + type);
 
     }
 

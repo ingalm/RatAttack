@@ -1,6 +1,8 @@
 package com.ratattack.game.view.state;
 
 import com.badlogic.gdx.Screen;
+import com.ratattack.game.gamecontroller.GameController;
+import com.ratattack.game.model.system.SpawnSystem;
 import com.ratattack.game.view.screens.ScreenFactory;
 
 public class TutorialState implements State {
@@ -11,11 +13,11 @@ public class TutorialState implements State {
      * */
 
 
-    private ScreenContext stateManager;
+    private ScreenContext screenContext;
     private Screen currentScreen;
 
-    public TutorialState(ScreenContext stateManager) {
-        this.stateManager = stateManager;
+    public TutorialState(ScreenContext screenContext) {
+        this.screenContext = screenContext;
         currentScreen = ScreenFactory.getScreen("TUTORIAL");
 
         renderScreen();
@@ -24,7 +26,7 @@ public class TutorialState implements State {
 
     @Override
     public void changeState(State state) {
-        stateManager.changeState(state);
+        screenContext.changeState(state);
 
     }
 
@@ -37,7 +39,7 @@ public class TutorialState implements State {
     @Override
     public void changeScreen(String type) {
         if(shouldChangeState(type)){
-            State state = type.equalsIgnoreCase("GAME") ? new GameState(stateManager): new MenuState(stateManager);
+            State state = type.equalsIgnoreCase("GAME") ? new GameState(screenContext): new MenuState(screenContext);
             changeState(state);
         }
         else {
@@ -49,7 +51,11 @@ public class TutorialState implements State {
     @Override
     public void renderScreen() {
 
-        stateManager.gameController.getGame().setScreen(currentScreen);
+
+        GameController.getInstance().getEngine().getSystem(SpawnSystem.class).setProcessing(false);
+        GameController.getInstance().getGame().setScreen(currentScreen);
+
+
     }
 
 
