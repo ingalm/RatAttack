@@ -1,5 +1,6 @@
 package com.ratattack.game.model.buttons;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -9,14 +10,16 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.ratattack.game.GameSettings;
 import com.ratattack.game.gamecontroller.GameController;
+import com.ratattack.game.gamecontroller.observers.BalanceObserver;
 
-public class UpgradeButton {
+public class UpgradeButton extends BalanceObserver {
 
     Button button;
     int id;
     Stage stage = GameController.getInstance().getStage();
 
     Texture upgradeTexture = new Texture("purplebutton.png");
+
 
     public UpgradeButton(int laneWidth, final int i) {
         id = i;
@@ -33,10 +36,18 @@ public class UpgradeButton {
             }
         });
 
+        GameController.getInstance().player.attachBalanceObserver(this);
+
         stage.addActor(button);
+
     }
 
     public Button getButton() {
         return button;
+    }
+
+    @Override
+    public void update() {
+
     }
 }
