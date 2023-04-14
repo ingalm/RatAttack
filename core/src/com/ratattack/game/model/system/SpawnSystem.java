@@ -6,6 +6,7 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.ashley.systems.IteratingSystem;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -91,7 +92,7 @@ public class SpawnSystem extends IteratingSystem {
         bounds.setSize(2*(texture.getWidth()/3), (texture.getHeight()));
         bounds.setCenter(position.x, position.y);
 
-        rat.getComponent(HealthComponent.class).setHealth(20);
+        rat.getComponent(HealthComponent.class).setHealth(GameSettings.ratStartHealth);
 
         engine.addEntity(rat);
     }
@@ -134,7 +135,7 @@ public class SpawnSystem extends IteratingSystem {
         grandChildEntity.getComponent(BalanceComponent.class).setBalance(500);
 
         HealthComponent health = healthMapper.get(grandChildEntity);
-        health.setHealth(50);
+        health.setHealth(GameSettings.grandChildStartHealth);
 
         engine.addEntity(grandChildEntity);
     }
