@@ -1,8 +1,10 @@
 package com.ratattack.game.model.system;
 
 import static com.ratattack.game.model.ComponentMappers.circleBoundsMapper;
+import static com.ratattack.game.model.ComponentMappers.healthMapper;
 import static com.ratattack.game.model.ComponentMappers.positionMapper;
 import static com.ratattack.game.model.ComponentMappers.rectangleBoundsMapper;
+import static com.ratattack.game.model.ComponentMappers.strengthMapper;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
@@ -47,11 +49,20 @@ public class CollisionSystem extends IteratingSystem {
 
             if (bounds.overlaps(otherBounds)) {
 
-                //Håndtere misting av liv
+                StrengthComponent hitStrength = strengthMapper.get(entity);
+                HealthComponent entityHealth = healthMapper.get(hittableEntity);
 
-                getEngine().removeEntity(hittableEntity);
+                entityHealth.setHealth((entityHealth.getHealth()-hitStrength.strength));
+
+                //Legg inn sjekk av om kula har en powerup, og apply effekten til entiteten
+
+                //Remove entity if it has lost all health
+                if (entityHealth.getHealth() <= 0) {
+                    getEngine().removeEntity(hittableEntity);
+                }
+
+                //Remove bullet
                 getEngine().removeEntity(entity);
-
             }
         }
     }
