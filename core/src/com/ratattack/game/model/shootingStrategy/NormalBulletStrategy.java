@@ -3,7 +3,6 @@ package com.ratattack.game.model.shootingStrategy;
 
 import static com.ratattack.game.model.ComponentMappers.circleBoundsMapper;
 import static com.ratattack.game.model.ComponentMappers.positionMapper;
-import static com.ratattack.game.model.ComponentMappers.powerUpMapper;
 import static com.ratattack.game.model.ComponentMappers.spriteMapper;
 import static com.ratattack.game.model.ComponentMappers.strengthMapper;
 import static com.ratattack.game.model.ComponentMappers.velocityMapper;
@@ -15,7 +14,6 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.ratattack.game.gamecontroller.GameController;
 import com.ratattack.game.model.components.CircleBoundsComponent;
 import com.ratattack.game.model.components.PositionComponent;
-import com.ratattack.game.model.components.PowerUpComponent;
 import com.ratattack.game.model.components.SpriteComponent;
 import com.ratattack.game.model.components.StrengthComponent;
 import com.ratattack.game.model.components.VelocityComponent;
@@ -33,7 +31,6 @@ public class NormalBulletStrategy implements ShootingStrategy{
         SpriteComponent sprite = spriteMapper.get(bullet);
         StrengthComponent strength = strengthMapper.get(bullet);
         CircleBoundsComponent bounds = circleBoundsMapper.get(bullet);
-        //PowerUpComponent powerUp = powerUpMapper.get(bullet);
 
         position.x = x;
         position.y = y;

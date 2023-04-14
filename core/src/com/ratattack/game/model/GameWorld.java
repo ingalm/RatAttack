@@ -5,7 +5,6 @@ import com.badlogic.ashley.core.PooledEngine;
 import com.ratattack.game.model.components.CircleBoundsComponent;
 import com.ratattack.game.model.components.PositionComponent;
 import com.ratattack.game.model.components.SpriteComponent;
-import com.ratattack.game.model.components.PowerUpComponent;
 import com.ratattack.game.model.components.StrengthComponent;
 import com.ratattack.game.model.components.UserComponent;
 import com.ratattack.game.model.components.VelocityComponent;

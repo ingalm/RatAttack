@@ -1,10 +1,12 @@
 package com.ratattack.game.model.system;
 
+import static com.ratattack.game.model.ComponentMappers.bulletEffectMapper;
 import static com.ratattack.game.model.ComponentMappers.circleBoundsMapper;
 import static com.ratattack.game.model.ComponentMappers.healthMapper;
 import static com.ratattack.game.model.ComponentMappers.positionMapper;
 import static com.ratattack.game.model.ComponentMappers.rectangleBoundsMapper;
 import static com.ratattack.game.model.ComponentMappers.strengthMapper;
+import static com.ratattack.game.model.ComponentMappers.velocityMapper;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
@@ -12,10 +14,12 @@ import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.ashley.utils.ImmutableArray;
 import com.ratattack.game.model.components.BoundsComponent;
+import com.ratattack.game.model.components.BulletEffectComponent;
 import com.ratattack.game.model.components.CircleBoundsComponent;
 import com.ratattack.game.model.components.HealthComponent;
 import com.ratattack.game.model.components.PositionComponent;
 import com.ratattack.game.model.components.StrengthComponent;
+import com.ratattack.game.model.components.VelocityComponent;
 
 
 public class CollisionSystem extends IteratingSystem {
@@ -54,7 +58,17 @@ public class CollisionSystem extends IteratingSystem {
 
                 entityHealth.setHealth((entityHealth.getHealth()-hitStrength.strength));
 
+                System.out.println("STRENGHT IS " + hitStrength.getStrength());
+
                 //Legg inn sjekk av om kula har en powerup, og apply effekten til entiteten
+                if (hitStrength.getStrength()==40) {
+                    System.out.println("ENTITY HIT BY FREEZEBULLET");
+
+                    VelocityComponent velocity = velocityMapper.get(hittableEntity);
+                    velocity.y = 0;
+                }
+
+
 
                 //Remove entity if it has lost all health
                 if (entityHealth.getHealth() <= 0) {
