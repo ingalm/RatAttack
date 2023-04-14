@@ -23,9 +23,8 @@ public class MenuScreen implements Screen {
      * TODO: LEGG TIL KOMMENTARER
      * */
 
-    GameController gameController = GameController.getInstance();
+    private final GameController gameController = GameController.getInstance();
 
-    private BitmapFont font;
     SpriteBatch batch = GameController.getInstance().getBatch();
 
 
@@ -43,6 +42,7 @@ public class MenuScreen implements Screen {
     private final Stage stage = gameController.getStage();
 
     public MenuScreen() {
+
         System.out.println(stage);
     }
 
@@ -57,8 +57,6 @@ public class MenuScreen implements Screen {
         Button highscoreButton = makeButton(highscoreTexture,5f,"TUTORIAL"); //TODO: endre til HIGHSCORE SCREEN
         Button playGameButton = makeButton(playGameTexture,2f,"GAME");
         Button watchTutorialButton = makeButton(watchTutorialTexture,1.25f,"TUTORIAL");
-
-
 
 
         stage.addActor(title);

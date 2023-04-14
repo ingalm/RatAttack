@@ -1,6 +1,8 @@
 package com.ratattack.game.view.state;
 
 import com.badlogic.gdx.Screen;
+import com.ratattack.game.gamecontroller.GameController;
+import com.ratattack.game.model.system.SpawnSystem;
 import com.ratattack.game.view.screens.ScreenFactory;
 
 public class GameState implements State {
@@ -9,11 +11,11 @@ public class GameState implements State {
     /***
      * TODO: LEGG TIL KOMMENTARER
      * */
-    private ScreenContext stateManager;
+    private final ScreenContext screenContext;
     private Screen currentScreen;
 
-    public GameState(ScreenContext sm) {
-        this.stateManager = sm;
+    public GameState(ScreenContext screenContext) {
+        this.screenContext = screenContext;
         currentScreen = ScreenFactory.getScreen("GAME");
 
         renderScreen();
@@ -21,20 +23,22 @@ public class GameState implements State {
 
     @Override
     public void changeState(State state) {
-        stateManager.changeState(state);
+
+        screenContext.changeState(state);
     }
 
     @Override
     public boolean shouldChangeState(String type) {
 
-        return type.equalsIgnoreCase("MENU") ||  type.equalsIgnoreCase("TUTORIAL") ;
+        return type.equalsIgnoreCase("MENU") ||
+                type.equalsIgnoreCase("TUTORIAL") ;
     }
 
     @Override
     public void changeScreen(String type) {
 
         if(shouldChangeState(type)){
-            State state = type.equalsIgnoreCase("MENU") ? new MenuState(stateManager): new TutorialState(stateManager);
+            State state = type.equalsIgnoreCase("MENU") ? new MenuState(screenContext): new TutorialState(screenContext);
             changeState(state);
         } else {
             currentScreen = ScreenFactory.getScreen(type);
@@ -45,12 +49,7 @@ public class GameState implements State {
 
     @Override
     public void renderScreen() {
-
-        stateManager.gameController.getGame().setScreen(currentScreen);
-
+        GameController.getInstance().getEngine().getSystem(SpawnSystem.class).setProcessing(true);
+        GameController.getInstance().getGame().setScreen(currentScreen);
     }
-
-
-
-
 }
