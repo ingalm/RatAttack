@@ -1,6 +1,5 @@
 package com.ratattack.game.model.buttons;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -10,10 +9,10 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.ratattack.game.GameSettings;
 import com.ratattack.game.gamecontroller.GameController;
-import com.ratattack.game.gamecontroller.observers.BalanceObserver;
+import com.ratattack.game.gamecontroller.observers.Observer;
 import com.ratattack.game.model.shootingStrategy.ShootingStrategy;
 
-public class UpgradeButton extends BalanceObserver {
+public class UpgradeButton extends Observer {
 
     Button button;
     int id;
@@ -44,7 +43,7 @@ public class UpgradeButton extends BalanceObserver {
                     nextPrice += 1;
 
                     //If the player can not afford the next upgrade
-                    if (!(ShootingStrategy.prices[nextPrice] < GameController.getInstance().player.getBalance())) {
+                    if (!(ShootingStrategy.prices[nextPrice] < GameController.getInstance().getPlayer().getBalance())) {
                         button.setBackground(buttonNotUpgradeable);
                         canAffordUpgrade = false;
                     }
@@ -52,13 +51,13 @@ public class UpgradeButton extends BalanceObserver {
             }
         });
 
-        GameController.getInstance().player.attachBalanceObserver(this);
+        GameController.getInstance().getPlayer().attachBalanceObserver(this);
         stage.addActor(button);
     }
 
     @Override
     public void update() {
-        if (!canAffordUpgrade && (ShootingStrategy.prices[nextPrice] < GameController.getInstance().player.getBalance())) {
+        if (!canAffordUpgrade && (ShootingStrategy.prices[nextPrice] < GameController.getInstance().getPlayer().getBalance())) {
             button.setBackground(buttonUpgradeable);
             canAffordUpgrade = true;
         }

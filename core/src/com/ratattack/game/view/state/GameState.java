@@ -1,5 +1,6 @@
 package com.ratattack.game.view.state;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Screen;
 import com.ratattack.game.gamecontroller.GameController;
 import com.ratattack.game.model.system.SpawnSystem;

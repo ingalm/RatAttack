@@ -1,5 +1,5 @@
 package com.ratattack.game.gamecontroller.observers;
 
-public interface Observer {
-    void update();
+public abstract class Observer {
+    public abstract void update();
 }

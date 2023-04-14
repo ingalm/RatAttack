@@ -1,8 +1,6 @@
 package com.ratattack.game.model;
 
-import com.ratattack.game.gamecontroller.observers.BalanceObserver;
 import com.ratattack.game.gamecontroller.observers.Observer;
-import com.ratattack.game.gamecontroller.observers.ScoreObserver;
 
 import java.util.ArrayList;
 
@@ -59,14 +57,12 @@ public class Player {
     public void notifyBalanceObservers(){
         for (Observer observer: balanceObservers) {
             observer.update();
-            System.out.println("Balance changed");
         }
     }
 
     public void notifyScoreObservers() {
         for (Observer observer: scoreObservers) {
             observer.update();
-            System.out.println("Score changed");
         }
     }
 }

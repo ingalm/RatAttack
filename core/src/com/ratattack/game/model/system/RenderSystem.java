@@ -85,9 +85,9 @@ public class RenderSystem extends IteratingSystem {
             // of the player when grandchild has crossed the whole field.
             if(entity.getComponent(BalanceComponent.class) != null) {
                int balance = entity.getComponent(BalanceComponent.class).getBalance();
-               int oldBalance = gameController.player.getBalance();
+               int oldBalance = gameController.getPlayer().getBalance();
                int newBalance = oldBalance + balance;
-               gameController.player.setBalance(newBalance);
+               gameController.getPlayer().setBalance(newBalance);
             }
             getEngine().removeEntity(entity);
         }
