@@ -9,6 +9,7 @@ import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Circle;
@@ -19,6 +20,7 @@ import com.ratattack.game.gamecontroller.GameController;
 import com.ratattack.game.model.components.BalanceComponent;
 import com.ratattack.game.model.components.BoundsComponent;
 import com.ratattack.game.model.components.CircleBoundsComponent;
+import com.ratattack.game.model.components.HealthComponent;
 import com.ratattack.game.model.components.PositionComponent;
 import com.ratattack.game.model.components.RectangleBoundsComponent;
 import com.ratattack.game.model.components.SpriteComponent;
@@ -56,6 +58,18 @@ public class RenderSystem extends IteratingSystem {
         Texture texture = spriteComponent.sprite.getTexture();
 
         batch.begin();
+
+
+        if (entity.getComponent(HealthComponent.class) != null) {
+            BitmapFont font = new BitmapFont();
+            font.setColor(Color.RED);
+            font.getData().setScale(5);
+            String s = Integer.toString(entity.getComponent(HealthComponent.class).getHealth());
+            font.draw(gameController.getBatch(),s, positionComponent.x+215, positionComponent.y+200);
+
+        }
+
+
         batch.draw(texture, positionComponent.x, positionComponent.y);
         batch.end();
 
