@@ -10,6 +10,7 @@ import static com.ratattack.game.model.ComponentMappers.velocityMapper;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.ratattack.game.GameSettings;
 import com.ratattack.game.gamecontroller.GameController;
 import com.ratattack.game.model.components.BulletEffectComponent;
 import com.ratattack.game.model.components.CircleBoundsComponent;
@@ -40,7 +41,7 @@ public class FreezeBulletStrategy implements ShootingStrategy{
         sprite.sprite = new Sprite(bulletTexture);
         sprite.sprite.setSize(20, 20);
 
-        strength.strength = 40;
+        strength.strength = GameSettings.freezeBulletStrength;
 
         bounds.setCenter(x, y);
         bounds.setSize(bulletTexture.getWidth()/2, bulletTexture.getHeight()/2);

@@ -30,7 +30,6 @@ public class GameWorld {
         bulletEntity.add(new PositionComponent());
         bulletEntity.add(new VelocityComponent());
         bulletEntity.add(new SpriteComponent());
-        //bulletEntity.add(new PowerUpComponent());
         bulletEntity.add(new StrengthComponent());
         bulletEntity.add(new CircleBoundsComponent());
         engine.addEntity(bulletEntity);

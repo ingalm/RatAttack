@@ -8,6 +8,7 @@ import static com.ratattack.game.model.ComponentMappers.velocityMapper;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.ratattack.game.GameSettings;
 import com.ratattack.game.gamecontroller.GameController;
 import com.ratattack.game.model.components.CircleBoundsComponent;
 import com.ratattack.game.model.components.PositionComponent;
@@ -37,7 +38,7 @@ public class FastBulletStrategy implements ShootingStrategy{
         sprite.sprite = new Sprite(bulletTexture);
         sprite.sprite.setSize(20, 20);
 
-        strength.strength = 30;
+        strength.strength = GameSettings.fastBulletStrength;
 
         bounds.setCenter(x, y);
         bounds.setSize(bulletTexture.getWidth()/2, bulletTexture.getHeight()/2);
