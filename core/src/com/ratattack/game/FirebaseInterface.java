@@ -6,15 +6,9 @@ import java.util.ArrayList;
 // Med "de andre" mener jeg AndroidInterfaceClass, CoreInterfaceClass og DesktopInterfaceClass
 public interface FirebaseInterface {
 
-    public void someFunction();
-
-    public void firebaseTest();
-
-    public void setOnValueChangedListener(DataHolderClass dataholder);
 
     public void getHighscores(ArrayList<Score> dataHolder);
 
-    public void setValueInDb(String target, String value);
 
     public void addHighscore(Score score, DataHolderClass dataholder);
 

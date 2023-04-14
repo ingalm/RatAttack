@@ -46,10 +46,6 @@ public class RatAttack extends Game {
 		highscore = new Highscore(_FBIC);
 
 		//FIREBASE
-		_FBIC.someFunction();
-		_FBIC.firebaseTest();
-		//_FBIC.setOnValueChangedListener(dataHolder);
-		_FBIC.setValueInDb("melding2", "Ny verdi har blitt gitt nå");
 		highscore.submitHighscore("VitaminReload", 9000);
 		//System.out.println("fra ratAttack ");
 		//dataHolder.PrintSomeValue();
