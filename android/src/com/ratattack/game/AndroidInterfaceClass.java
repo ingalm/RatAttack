@@ -23,6 +23,7 @@ public class AndroidInterfaceClass implements FirebaseInterface {
     DatabaseReference myRef;
 
     DatabaseReference highscores;
+    DataHolderClass dataholder;
 
     public AndroidInterfaceClass() {
 
@@ -57,9 +58,9 @@ public class AndroidInterfaceClass implements FirebaseInterface {
                 // denne lokasjonen er oppdatert
                 String value = snapshot.getValue(String.class);
                 Log.d(TAG,"Value is " + value);
-                dataholder.someValue = value;
-                dataholder.PrintSomeValue();
-
+                //dataholder.someValue = value;
+                System.out.println("FRA ONDATACHENGE!");
+                //dataholder.PrintSomeValue();
             }
 
             @Override
@@ -68,10 +69,11 @@ public class AndroidInterfaceClass implements FirebaseInterface {
                 Log.w(TAG, "Failed to read value: ", error.toException());
             }
         });
+
     }
 
     @Override
-    public void getHighscores(ArrayList<Score> dataHolder, DataHolderClass dataholder) {
+    public void getHighscores(ArrayList<Score> dataHolder, final DataHolderClass dataholder) {
         System.out.println("Getting highcores");
         highscores.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
@@ -83,10 +85,12 @@ public class AndroidInterfaceClass implements FirebaseInterface {
                     dataHolder.add(child.getValue(Score.class));
                     //key = highscores.child(child.toString()).getKey();
                     key = child.getKey();
-                    dataHolder.someValue = key;
                 }
                 Collections.sort(dataHolder);
                 System.out.println("KEY ER: " + key);
+                //dataholder.setSomeValue(key);
+                //dataholder.someValue = key;
+                //dataholder.PrintSomeValue();
             }
         });
     }
@@ -98,7 +102,6 @@ public class AndroidInterfaceClass implements FirebaseInterface {
         myRef = database.getReference(target);
         myRef.setValue(value);
     }
-
 
     @Override
     public void addHighscore(Score score) {

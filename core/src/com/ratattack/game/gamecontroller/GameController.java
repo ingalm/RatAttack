@@ -3,6 +3,7 @@ package com.ratattack.game.gamecontroller;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.ratattack.game.DataHolderClass;
 import com.ratattack.game.FirebaseInterface;
 import com.ratattack.game.RatAttack;
 import com.ratattack.game.model.Field;
@@ -39,6 +40,7 @@ public class GameController {
     public StateManager stateManager;
 
     FirebaseInterface _FBIC;
+    DataHolderClass _dataHolder;
 
     private GameController() {
         batch = new SpriteBatch();
@@ -157,5 +159,12 @@ public class GameController {
 
     public void  setFirebaseInterface(FirebaseInterface FBIC) {
         this._FBIC = FBIC;
+    }
+    public void setDataHolderClass(DataHolderClass dataHolder) {
+        this._dataHolder = dataHolder;
+    }
+
+    public DataHolderClass getDataHolderClass(){
+        return _dataHolder;
     }
 }

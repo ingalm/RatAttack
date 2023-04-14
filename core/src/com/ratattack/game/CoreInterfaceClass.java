@@ -13,7 +13,6 @@ public class CoreInterfaceClass implements FirebaseInterface {
     public void firebaseTest() {
 
     }
-
     @Override
     public void setOnValueChangedListener(DataHolderClass dataholder) {
 

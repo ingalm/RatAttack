@@ -3,6 +3,7 @@ package com.ratattack.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.ratattack.game.gamecontroller.GameController;
 
 import java.util.ArrayList;
 
@@ -18,6 +19,7 @@ public class Highscore {
         this._FBIC = _FBIC;
         font = new BitmapFont();
         font.getData().setScale(6f, 6f);
+        dataholder = GameController.getInstance().getDataHolderClass();
         fetchHighscores();
     }
 

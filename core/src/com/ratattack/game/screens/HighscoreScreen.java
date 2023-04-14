@@ -41,6 +41,9 @@ public class HighscoreScreen implements Screen {
         gameController = GameController.getInstance();
         highscore = new Highscore(_FBIC);
         new ScoreManager();
+        System.out.println("denne er fra MenuScreen" + dataHolder.getSomeValue());
+        dataHolder.PrintSomeValue();
+        highscore.submitHighscore("Rebecca", 780);
     }
 
     @Override
