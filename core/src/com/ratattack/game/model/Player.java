@@ -1,7 +1,15 @@
 package com.ratattack.game.model;
 
+import com.ratattack.game.gamecontroller.observers.BalanceObserver;
+import com.ratattack.game.gamecontroller.observers.Observer;
+import com.ratattack.game.gamecontroller.observers.ScoreObserver;
+
+import java.util.ArrayList;
+
 public class Player {
 
+    private final ArrayList<Observer> balanceObservers = new ArrayList<>();
+    private final ArrayList<Observer> scoreObservers = new ArrayList<>();
     private int score;
 
     private String name;
@@ -16,6 +24,7 @@ public class Player {
 
     public void setScore(int newScore) {
         score = newScore;
+        notifyScoreObservers();
     }
 
     public void setName(String name) {
@@ -24,6 +33,7 @@ public class Player {
 
     public void setBalance(int newBalance) {
         balance = newBalance;
+        notifyBalanceObservers();
     }
 
     public int getScore() {
@@ -36,5 +46,27 @@ public class Player {
 
     public String getName() {
         return name;
+    }
+
+    public void attachBalanceObserver(Observer observer){
+        balanceObservers.add(observer);
+    }
+
+    public void attachScoreObserver(Observer observer){
+        scoreObservers.add(observer);
+    }
+
+    public void notifyBalanceObservers(){
+        for (Observer observer: balanceObservers) {
+            observer.update();
+            System.out.println("Balance changed");
+        }
+    }
+
+    public void notifyScoreObservers() {
+        for (Observer observer: scoreObservers) {
+            observer.update();
+            System.out.println("Score changed");
+        }
     }
 }
