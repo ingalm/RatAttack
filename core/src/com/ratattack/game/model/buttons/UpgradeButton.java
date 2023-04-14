@@ -9,7 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.ratattack.game.GameSettings;
 import com.ratattack.game.gamecontroller.GameController;
-import com.ratattack.game.gamecontroller.observers.Observer;
+import com.ratattack.game.gamecontroller.Observer;
 import com.ratattack.game.model.shootingStrategy.ShootingStrategy;
 
 public class UpgradeButton extends Observer {

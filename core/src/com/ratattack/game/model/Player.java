@@ -1,6 +1,6 @@
 package com.ratattack.game.model;
 
-import com.ratattack.game.gamecontroller.observers.Observer;
+import com.ratattack.game.gamecontroller.Observer;
 
 import java.util.ArrayList;
 
