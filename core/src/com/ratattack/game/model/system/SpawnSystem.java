@@ -1,5 +1,7 @@
 package com.ratattack.game.model.system;
 
+import static com.ratattack.game.model.ComponentMappers.healthMapper;
+
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.core.PooledEngine;
@@ -89,7 +91,7 @@ public class SpawnSystem extends IteratingSystem {
         bounds.setSize(2*(texture.getWidth()/3), (texture.getHeight()));
         bounds.setCenter(position.x, position.y);
 
-        rat.getComponent(HealthComponent.class).setHealth(300);
+        rat.getComponent(HealthComponent.class).setHealth(20);
 
         engine.addEntity(rat);
     }
@@ -130,6 +132,9 @@ public class SpawnSystem extends IteratingSystem {
         bounds.setCenter(position.x, position.y);
 
         grandChildEntity.getComponent(BalanceComponent.class).setBalance(500);
+
+        HealthComponent health = healthMapper.get(grandChildEntity);
+        health.setHealth(50);
 
         engine.addEntity(grandChildEntity);
     }

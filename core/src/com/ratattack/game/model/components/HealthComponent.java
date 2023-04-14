@@ -9,4 +9,8 @@ public class HealthComponent implements Component {
     public void setHealth(int x) {
         this.health = x;
     }
+
+    public int getHealth() {
+        return health;
+    }
 }
